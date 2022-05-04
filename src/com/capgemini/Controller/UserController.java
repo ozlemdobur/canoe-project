@@ -9,11 +9,12 @@ import com.capgemini.View.UserAddView;
 import com.capgemini.View.UserMenuView;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserController {
-    public void execute(Model model) throws FileNotFoundException {
+    public void execute(Model model) throws IOException {
         boolean selectedAnyMenu = true;
         while (selectedAnyMenu) {
             UserMenuView userMenuView = new UserMenuView();
