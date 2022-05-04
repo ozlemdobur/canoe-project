@@ -15,7 +15,7 @@ public class UserDeleteMenuView {
         Scanner sc = new Scanner(System.in);
         Users selectedUser = new Users();
         System.out.println(GREEN_BOLD + "************************************"+ TEXT_RESET);
-        System.out.println(GREEN_BOLD + "**********  USER ADD MENU  *********"+ TEXT_RESET);
+        System.out.println(GREEN_BOLD + "**********  USER DELETE MENU  *********"+ TEXT_RESET);
         System.out.println(GREEN_BOLD + "************************************"+ TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information to delete an User"+ TEXT_RESET);
         System.out.println(GREEN_BOLD + "Id : ");
@@ -23,12 +23,6 @@ public class UserDeleteMenuView {
         System.out.print(GREEN_BOLD + "Name : ");
         name=sc.nextLine();
         String idAndName=id.trim()+","+name.trim().toUpperCase();
-        /*if(!id.trim().equals("")&&!name.trim().equals("")){
-            User newUser = new User(id, name.toUpperCase(),"","");
-            return newUser;
-        }
-        return null;
-         */
         return idAndName;
     }
 
