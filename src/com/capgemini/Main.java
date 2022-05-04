@@ -12,7 +12,6 @@ public class Main {
     public static final String TEXT_RESET = "\u001B[0m";
     public static void main(String[] args) throws IOException {
         Model model = new Model();
-        System.out.println(model.getUsers().get(0));
         LoginController loginController = new LoginController(model);
         boolean loginStatus = loginController.execute();
         MainMenuController mainMenuController = new MainMenuController(model);
