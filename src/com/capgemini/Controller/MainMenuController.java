@@ -16,8 +16,8 @@ public class MainMenuController {
     public MainMenuController(Model model){
         this.model = model;
     }
-    public void execute(boolean loginStatus) throws IOException {
 
+    public void execute(boolean loginStatus) throws IOException {
         while (loginStatus) {
             MainMenuView mainMenuView = new MainMenuView();
             String selectedMainMenuItem = mainMenuView.showMainMenu(mainMenuList(model));
