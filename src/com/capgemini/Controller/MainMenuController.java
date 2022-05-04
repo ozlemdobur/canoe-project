@@ -7,6 +7,7 @@ import com.capgemini.View.LoginView;
 import com.capgemini.View.MainMenuView;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class MainMenuController {
     public MainMenuController(Model model){
         this.model = model;
     }
-    public void execute(boolean loginStatus) throws FileNotFoundException {
+    public void execute(boolean loginStatus) throws IOException {
 
         while (loginStatus) {
             MainMenuView mainMenuView = new MainMenuView();
