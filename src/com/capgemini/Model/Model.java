@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
+    // add some comment
     private List<User> users = new ArrayList<User>();
     private List<Role> roles = new ArrayList<Role>();
     private List<Permission> permissions = new ArrayList<Permission>();
