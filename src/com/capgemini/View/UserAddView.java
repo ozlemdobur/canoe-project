@@ -31,10 +31,10 @@ public class UserAddView {
     }
 
     public void successedMessages() {
-        System.out.println(GREEN_BOLD + "You added a new user!"+ TEXT_RESET);
-    }
+            System.out.println(GREEN_BOLD + "You added a new user!"+ TEXT_RESET);
+        }
 
-    public void failedMessages() {
-        System.out.println(GREEN_BOLD + "Please fill in the all fields!"+ TEXT_RESET);
+        public void failedMessages() {
+            System.out.println(GREEN_BOLD + "Please fill in the all fields!"+ TEXT_RESET);
     }
 }
