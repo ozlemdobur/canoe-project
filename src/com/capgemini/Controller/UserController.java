@@ -59,7 +59,6 @@ public class UserController {
     public List<String> userMenuList(Model model) {
         List<String> userMenuList = new ArrayList<String>();
         List<String> userMenuViewKeyList = new ArrayList<String>();
-        // Model model = new Model();
         for (Permission permission : model.getPermissions()) {
             if (model.getActiveUser().getRoleKey().equals(permission.getpRoleKey()) &&
                     permission.getpViewKey().length() == 2 && permission.getpViewKey().startsWith("U")) {
@@ -72,8 +71,6 @@ public class UserController {
             }
         }
         userMenuList.add("Exit (E)");
-
-
         return userMenuList;
     }
 }

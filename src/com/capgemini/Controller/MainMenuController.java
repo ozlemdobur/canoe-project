@@ -15,8 +15,8 @@ public class MainMenuController {
     public MainMenuController(Model model){
         this.model = model;
     }
-    public void execute(boolean loginStatus) throws FileNotFoundException {
 
+    public void execute(boolean loginStatus) throws FileNotFoundException {
         while (loginStatus) {
             MainMenuView mainMenuView = new MainMenuView();
             String selectedMainMenuItem = mainMenuView.showMainMenu(mainMenuList(model));
