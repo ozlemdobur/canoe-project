@@ -11,7 +11,7 @@ public class Model {
     private List<View> views = new ArrayList<View>();
     private List<Canoe> canoes = new ArrayList<Canoe>();
     private User activeUser = new User();
-
+    private List<Reservation> reservations=new ArrayList<>();
     public Model() {
         Users users = new Users();
         this.users=users.getUsers();
@@ -24,6 +24,8 @@ public class Model {
         this.activeUser = activeUser;
         Canoes canoes = new Canoes();
         this.canoes = canoes.getCanoes();
+        Reservations reservations = new Reservations();
+        this.reservations=reservations.getReservations();
     }
 
     public List<Canoe> getCanoes() {
@@ -62,4 +64,5 @@ public class Model {
     public void setViews(List<View> views) {
         this.views = views;
     }
+    public List<Reservation> getReservations(){return reservations;}
 }
