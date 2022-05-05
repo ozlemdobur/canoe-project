@@ -21,17 +21,17 @@ public class UserDeleteController {
         System.out.println(id);
         System.out.println(name);
 
-
         for (int i = 0; i < users.getUsers().size(); i++) {
             String checkId = users.getUsers().get(i).getUserId();
             String checkName = users.getUsers().get(i).getUserName();
             if (id.equals(checkId) && name.equals(checkName)) {
                 password = users.getUsers().get(i).getPassword();
-                role = users.getUsers().get(i).getUserId();
+                role = users.getUsers().get(i).getRoleKey();
                 users.getUsers().remove(i);
                 users.setUsers(users.getUsers());
             }
         }
+
 
         PrintWriter writer = new PrintWriter("src/com/capgemini/Model/UserDB");
         writer.print("");
@@ -44,4 +44,21 @@ public class UserDeleteController {
         writer.close();
     }
 }
+
+/*
+
+
+
+
+         for (User user : users.getUsers()) {
+            String checkId = user.getUserId();
+            String checkName = user.getUserName();
+            if (id.equals(checkId) && name.equals(checkName)) {
+                password = user.getPassword();
+                role = user.getRoleKey();
+                users.getUsers().remove(user);
+                users.setUsers(users.getUsers());
+            }
+        }
+ */
 
