@@ -25,6 +25,7 @@ public class UserAddController {
                     users.getRoleKey());
         }
         writer.close();
+
         return true;
     }
 }

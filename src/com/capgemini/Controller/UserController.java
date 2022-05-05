@@ -6,6 +6,7 @@ import com.capgemini.Model.User;
 import com.capgemini.Model.View;
 import com.capgemini.View.UserAddView;
 import com.capgemini.View.UserMenuView;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class UserController {
                         selectedUserMenuItem = "UA";
                         break;
                     }
-                    UserAddController userAddController = new UserAddController(model,newUser);
+                    UserAddController userAddController = new UserAddController(model, newUser);
                     userAddController.execute();
                     break;
                 case "UE":

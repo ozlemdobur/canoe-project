@@ -15,7 +15,5 @@ public class Main {
         boolean loginStatus = loginController.execute();
         MainMenuController mainMenuController = new MainMenuController(model);
         mainMenuController.execute(loginStatus);
-
-	// write your code here
     }
 }

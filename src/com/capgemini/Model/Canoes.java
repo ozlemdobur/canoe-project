@@ -29,7 +29,9 @@ public class Canoes {
     public List<Canoe> getCanoes() {
         return canoes;
     }
+
     public void setCanoes(List<Canoe> canoes) {
         this.canoes = canoes;
     }
 }
+
