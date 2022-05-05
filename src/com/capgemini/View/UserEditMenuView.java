@@ -34,7 +34,7 @@ public class UserEditMenuView {
     }
 
     public String getNewRole() {
-        System.out.println(GREEN_BOLD + "Please enter New Role" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Please enter New Role as Admin (AD), General Manager(GM), Receptionist(RE)" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "New Role :" + TEXT_RESET);
         return sc.nextLine();
     }
