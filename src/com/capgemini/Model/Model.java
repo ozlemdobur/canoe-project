@@ -11,12 +11,8 @@ public class Model {
     private List<View> views = new ArrayList<View>();
     private List<Canoe> canoes = new ArrayList<Canoe>();
     private User activeUser = new User();
-<<<<<<< HEAD
     private List<Reservation> reservations = new ArrayList<Reservation>();
 
-=======
-    private List<Reservation> reservations=new ArrayList<>();
->>>>>>> 15d3d7c6739efbbd579fe3e170e96b58e36f6c85
     public Model() {
         Users users = new Users();
         this.users=users.getUsers();
@@ -30,12 +26,7 @@ public class Model {
         this.reservations = reservations.getReservations();
         Canoes canoes = new Canoes();
         this.canoes = canoes.getCanoes();
-<<<<<<< HEAD
         this.activeUser = activeUser;
-=======
-        Reservations reservations = new Reservations();
-        this.reservations=reservations.getReservations();
->>>>>>> 15d3d7c6739efbbd579fe3e170e96b58e36f6c85
     }
 
     public User getActiveUser() {
@@ -68,7 +59,7 @@ public class Model {
     public void setViews(List<View> views) {
         this.views = views;
     }
-<<<<<<< HEAD
+
     public List<Reservation> getReservations() {
         return reservations;
     }
@@ -84,8 +75,4 @@ public class Model {
     public void setCanoes(List<Canoe> canoes) {
         this.canoes = canoes;
     }
-
-=======
-    public List<Reservation> getReservations(){return reservations;}
->>>>>>> 15d3d7c6739efbbd579fe3e170e96b58e36f6c85
 }
