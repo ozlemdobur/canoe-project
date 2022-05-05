@@ -3,8 +3,6 @@ package com.capgemini;
 import com.capgemini.Controller.LoginController;
 import com.capgemini.Controller.MainMenuController;
 import com.capgemini.Model.Model;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main {
@@ -16,7 +14,5 @@ public class Main {
         boolean loginStatus = loginController.execute();
         MainMenuController mainMenuController = new MainMenuController(model);
         mainMenuController.execute(loginStatus);
-
-	// write your code here
     }
 }

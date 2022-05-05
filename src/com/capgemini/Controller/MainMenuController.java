@@ -28,7 +28,7 @@ public class MainMenuController {
                     break;
                 case "C":
                     CanoeController canoeController = new CanoeController();
-                    canoeController.execute();
+                    canoeController.execute(model);
                     break;
                 case "U":
                     UserController userController = new UserController();
@@ -39,7 +39,6 @@ public class MainMenuController {
             }
         }
     }
-
 
     public List<String> mainMenuList(Model model) {
         List<String> mainMenuList = new ArrayList<String>();
@@ -57,24 +56,7 @@ public class MainMenuController {
         mainMenuList.add("Exit (E)");
         return mainMenuList;
     }
-
 }
-//model.
-
-//       activeUser = loginController.checkUserPassword(loginNamePassword, model);
-// while (activeUser. != null) {
-//  System.out.println(activeUser.getUserName());
-
-// }
-
-   /* public void execute() {
-        LoginController loginController = new LoginController();
-        LoginView loginView = new LoginView();
-        User activeUser = loginController.execute(loginView.login(), model);
-        while (activeUser != null) {
-            System.out.println(activeUser.getUserName());
-
-        }*/
 
 
 

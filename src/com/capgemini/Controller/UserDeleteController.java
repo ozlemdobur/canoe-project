@@ -1,17 +1,15 @@
 package com.capgemini.Controller;
 
-import com.capgemini.Model.Model;
 import com.capgemini.Model.User;
 import com.capgemini.Model.Users;
-import com.capgemini.View.UserDeleteMenuView;
+import com.capgemini.View.UserDeleteView;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class UserDeleteController {
 
     String deleteIdAndName, id, name, password, role;
-    UserDeleteMenuView userDeleteMenuView = new UserDeleteMenuView();
+    UserDeleteView userDeleteMenuView = new UserDeleteView();
     Users users = new Users();
 
 
