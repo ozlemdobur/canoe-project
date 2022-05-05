@@ -24,7 +24,7 @@ public class MainMenuController {
             switch (selectedMainMenuItem) {
                 case "R":
                     ReservationController reservationController = new ReservationController();
-                    reservationController.execute();
+                    reservationController.execute(model);
                     break;
                 case "C":
                     CanoeController canoeController = new CanoeController();

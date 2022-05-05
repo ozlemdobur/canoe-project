@@ -18,7 +18,7 @@ public class MainMenuView {
         for (int i = 0; i < mainMenuList.size() ; i++) {
             System.out.println(mainMenuList.get(i));
         }
-        System.out.println(GREEN_BOLD +"Please select the menu..."+ TEXT_RESET);
+        System.out.print(GREEN_BOLD +"Please select the menu : "+ TEXT_RESET);
         selectedMainMenuItem = scanner.nextLine().toUpperCase();
         return selectedMainMenuItem;
     }

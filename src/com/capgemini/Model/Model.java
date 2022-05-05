@@ -10,6 +10,8 @@ public class Model {
     private List<Permission> permissions = new ArrayList<Permission>();
     private List<View> views = new ArrayList<View>();
     private User activeUser = new User();
+    private List<Reservation> reservations = new ArrayList<Reservation>();
+    private List<Canoe> canoes = new ArrayList<Canoe>();
     public Model() {
         Users users = new Users();
         this.users=users.getUsers();
@@ -19,8 +21,13 @@ public class Model {
         this.views = views.getViews();
         Permissions permissions = new Permissions();
         this.permissions = permissions.getPermissions();
+        Reservations reservations = new Reservations();
+        this.reservations = reservations.getReservations();
+        Canoes canoes = new Canoes();
+        this.canoes = canoes.getCanoes();
         this.activeUser = activeUser;
     }
+
     public User getActiveUser() {
         return activeUser;
     }
@@ -61,4 +68,19 @@ public class Model {
         this.views = views;
     }
 
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public List<Canoe> getCanoes() {
+        return canoes;
+    }
+
+    public void setCanoes(List<Canoe> canoes) {
+        this.canoes = canoes;
+    }
 }

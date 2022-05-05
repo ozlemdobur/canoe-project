@@ -1,7 +1,5 @@
 package com.capgemini.Model;
 
-import java.util.List;
-
 public class User {
     private String userId;
     private String userName;
@@ -9,8 +7,6 @@ public class User {
     private String roleKey;
     public User() {
     }
-
-    ;
 
     public User(String userId, String userName, String password, String roleKey) {
         this.userId = userId;
