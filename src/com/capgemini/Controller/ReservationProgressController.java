@@ -16,14 +16,14 @@ public class ReservationProgressController {
     }
 
     public String costCalculating(String duration, String canoeId) {
-        int price = 0;
-        int intDuration = Integer.parseInt(duration);
+        double price = 0;
+        int intDuration = Integer.parseInt(duration.trim());
         for (Canoe canoe : model.getCanoes()) {
             if (canoe.getCanoeId().equals(canoeId)) {
-                price = Integer.parseInt(canoe.getTripPrice());
+                price = Double.parseDouble(canoe.getTripPrice().trim());
             }
         }
-        int totalCost = intDuration * price / 30;
+        double totalCost = intDuration * price / 30;
         return totalCost + "";
     }
 
@@ -34,38 +34,21 @@ public class ReservationProgressController {
     }
 
     public String whichCanoeIsFree(String reservationDate, String canoeType) {
-        List<Integer> rezervedCanoieId = new <Integer>ArrayList();
+        List<Integer> rezervedCanoeId = new <Integer>ArrayList();
 
         for (Reservation reservation : model.getReservations()) {
             if (reservation.getDate().equals(reservationDate) &&
                     reservation.getCanoeType().equals(canoeType)) {
-                rezervedCanoieId.add(Integer.parseInt(reservation.getCanoeId()));
+                rezervedCanoeId.add(Integer.parseInt(reservation.getCanoeId()));
             }
         }
-        Collections.sort(rezervedCanoieId);
-        if (rezervedCanoieId.size() == 0) {
-            return "1";
-        }
-        int i = 0;
+        Collections.sort(rezervedCanoeId);
         for (Canoe canoe : model.getCanoes()) {
-            while (i < rezervedCanoieId.size()) {
-                if (!rezervedCanoieId.get(i).toString().contains(canoe.getCanoeId()) && canoe.getCanoeType().equals(canoeType)) {
+            if (canoe.getCanoeType().equals(canoeType)) {
+                if (!rezervedCanoeId.contains(Integer.valueOf(canoe.getCanoeId()))) {
                     return canoe.getCanoeId();
-                } else {
-                    i++;
-                    break;
                 }
             }
-
-
-           /* while (i < rezervedCanoieId.size()) {
-                if (!rezervedCanoieId.get(i).toString().contains(canoe.getCanoeId()) && canoe.getCanoeType().equals(canoeType)) {
-                    return canoe.getCanoeId();
-                } else {
-                    i++;
-                    break;
-                }
-            }*/
         }
         return null;
     }
@@ -74,7 +57,7 @@ public class ReservationProgressController {
         String defaultCanoeDuration = "30";
         for (Canoe canoe : model.getCanoes()) {
             if (canoe.getCanoeId().equals(canoeId)) {
-                return canoe.getTimeOfTheMinimumTrip();
+                return canoe.getTimeOfTheMinimumTrip().trim();
             }
         }
         return defaultCanoeDuration;
