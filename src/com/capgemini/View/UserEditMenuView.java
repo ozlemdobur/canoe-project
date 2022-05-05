@@ -1,10 +1,5 @@
 package com.capgemini.View;
 
-import com.capgemini.Controller.CanoeController;
-import com.capgemini.Controller.ReservationController;
-import com.capgemini.Controller.UserController;
-import com.capgemini.Model.User;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -16,9 +11,9 @@ import static com.capgemini.Main.TEXT_RESET;
 public class UserEditMenuView {
     Scanner sc = new Scanner(System.in);
     List<String> data = new ArrayList<>();
-    String editName, editId, chosenKey;
+    String editName, editId;
 
-    public String executeView() {
+    public void executeView() {
 
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "**********  USER EDIT MENU  *********" + TEXT_RESET);
@@ -26,11 +21,8 @@ public class UserEditMenuView {
         System.out.println(GREEN_BOLD + "Please enter the name and id of the user who you want to edit" + TEXT_RESET);
         System.out.print(GREEN_BOLD + "Name : ");
         editName = sc.nextLine();
-        //data.add(sc.nextLine());
         System.out.print(GREEN_BOLD + "ID : ");
         editId = sc.nextLine();
-        //data.add(sc.nextLine());
-        return editName.trim().toUpperCase(Locale.ROOT) + "," + editId.trim().toUpperCase(Locale.ROOT);
     }
 
     public String getNewRole() {
@@ -56,16 +48,18 @@ public class UserEditMenuView {
         return sc.nextLine();
     }
 
-    public void successfulMessage(){
-        System.out.println(GREEN_BOLD + "Congratulations transaction completed successfully!!!!" + TEXT_RESET);
+    public void successfulMessage(String chosenKey){
+        System.out.println(GREEN_BOLD + "Congratulations " + TEXT_RESET+GREEN_BOLD+chosenKey+TEXT_RESET+GREEN_BOLD+" is changed Successfully!!!!"+TEXT_RESET);
 
     }
 
-    public void selectedUser(String id, String name, String role){
+    public void selectedUser(String id, String name, String role, String password){
         System.out.println(GREEN_BOLD + "Here is the chosen User" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET+name);
         System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET+id);
         System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET+role);
+        System.out.println(GREEN_BOLD + "Password :" + TEXT_RESET+password);
+
     }
 
     public String askIfitisCorrect(){
@@ -73,7 +67,13 @@ public class UserEditMenuView {
         return sc.nextLine();
     }
 
+    public String getEditName() {
+        return editName.trim().toUpperCase(Locale.ROOT);
+    }
 
+    public String getEditId() {
+        return editId.trim().toUpperCase(Locale.ROOT);
+    }
 }
 
 

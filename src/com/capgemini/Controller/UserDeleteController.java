@@ -6,21 +6,24 @@ import com.capgemini.View.UserDeleteView;
 
 import java.io.*;
 
+import static com.capgemini.Main.GREEN_BOLD;
+import static com.capgemini.Main.TEXT_RESET;
+
 public class UserDeleteController {
 
-    String deleteIdAndName, id, name, password, role;
+    String id, name, password, role;
     UserDeleteView userDeleteMenuView = new UserDeleteView();
     Users users = new Users();
+    int count=-1;
 
 
     public void execute() throws FileNotFoundException {
 
-        deleteIdAndName = userDeleteMenuView.execute();
-        id = deleteIdAndName.substring(0, deleteIdAndName.indexOf(','));
-        name = deleteIdAndName.substring(deleteIdAndName.indexOf(',') + 1);
-        System.out.println(id);
-        System.out.println(name);
+        userDeleteMenuView.execute();
+        id= userDeleteMenuView.getId();
+        name= userDeleteMenuView.getName();
 
+        /*
         for (int i = 0; i < users.getUsers().size(); i++) {
             String checkId = users.getUsers().get(i).getUserId();
             String checkName = users.getUsers().get(i).getUserName();
@@ -31,9 +34,34 @@ public class UserDeleteController {
                 users.setUsers(users.getUsers());
             }
         }
+         */
+
+        boolean check = false;
+
+        for (User user : users.getUsers()) {
+            count++;
+            if (id.equals(user.getUserId()) && name.equals(user.getUserName())) {
+                password = user.getPassword();
+                role = user.getRoleKey();
+                userDeleteMenuView.selectedUser(id,name,role,password);
+                check = true;
+                break;
+            }
+        }
+
+        if(check&& userDeleteMenuView.checkUser()){
+            delete(count);
+        }else if (check==false){
+            System.out.println(GREEN_BOLD + "The user is not found please check information and try again." + TEXT_RESET);
+        }
 
 
+
+    }
+
+    private void delete(int index) throws FileNotFoundException {
         PrintWriter writer = new PrintWriter("src/com/capgemini/Model/UserDB");
+        users.getUsers().remove(index);
         writer.print("");
         for (User user : users.getUsers()) {
             writer.println(user.getUserId() + "," +
@@ -42,8 +70,10 @@ public class UserDeleteController {
                     user.getRoleKey());
         }
         writer.close();
+        userDeleteMenuView.successMessage();
     }
 }
+
 
 /*
 
