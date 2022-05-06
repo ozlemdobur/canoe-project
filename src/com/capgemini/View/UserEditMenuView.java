@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import static com.capgemini.Main.GREEN_BOLD;
-import static com.capgemini.Main.TEXT_RESET;
+import static com.capgemini.Main.*;
 
 public class UserEditMenuView {
     Scanner sc = new Scanner(System.in);
@@ -48,19 +47,20 @@ public class UserEditMenuView {
         return sc.nextLine();
     }
 
-    public void successfulMessage(String chosenKey){
-        System.out.println(GREEN_BOLD + "Congratulations " + TEXT_RESET+GREEN_BOLD+chosenKey+TEXT_RESET+GREEN_BOLD+" is changed Successfully!!!!"+TEXT_RESET);
+    public void successfulMessage(String chosenKey) {
 
     }
 
-    public void selectedUser(String id, String name, String role, String password){
+    public void selectedUser(String id, String name, String role, String password) {
         System.out.println(GREEN_BOLD + "Here is the chosen User" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET+name);
-        System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET+id);
-        System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET+role);
+        System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET + name);
+        System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + id);
+        System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + role);
+        System.out.println(GREEN_BOLD + "Password :" + TEXT_RESET + password);
+
     }
 
-    public String askIfitisCorrect(){
+    public String askIfitisCorrect() {
         System.out.println(GREEN_BOLD + "Is it correct user ?(Y/N)" + TEXT_RESET);
         return sc.nextLine();
     }

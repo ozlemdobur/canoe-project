@@ -35,7 +35,7 @@ public class CanoeAddController {
             writer.println(canoes.getCanoeId() + "," +
                     canoes.getCanoeType() + "," +
                     canoes.getNumberOfTheSeats() + "," +
-                    canoes.getTimeOfTheMinimumTrip() + ", " +
+                    canoes.getTimeOfTheMinimumTrip() + "," +
                     canoes.getTripPrice());
         }
         writer.close();
