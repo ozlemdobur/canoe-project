@@ -24,16 +24,6 @@ public class UserEditController {
         name = userEditMenuView.getEditName();
         id = userEditMenuView.getEditId();
 
-        /*
-        for (int i = 0; i < users.getUsers().size(); i++) {
-            if (id.equals(users.getUsers().get(i).getUserId()) && name.equals(users.getUsers().get(i).getUserName())) {
-                role = users.getUsers().get(i).getRoleKey();
-                password = users.getUsers().get(i).getPassword();
-                users.getUsers().remove(i);
-                break;
-            }
-        }
-        */
         boolean check = false;
         for (User user : model.getUsers()) {
             count++;

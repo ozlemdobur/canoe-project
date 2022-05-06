@@ -14,7 +14,7 @@ public class ReservationController {
             ReservationMenuView reservationMenuView = new ReservationMenuView();
             List reservationMenuList = reservationMenuList(model);
             String selectedReservationMenuItem = reservationMenuView.show(reservationMenuList);
-<<<<<<< HEAD
+
             boolean isItSuccessed ;
             switch (selectedReservationMenuItem) {
                 case "RA":
@@ -26,47 +26,15 @@ public class ReservationController {
                         selectedReservationMenuItem = "RA";
                         break;
                     }
-=======
-            switch (selectedReservationMenuItem) {
-                case "RA":
-                    ReservationAddController reservationAddController = new ReservationAddController(model);
-                    reservationAddController.execute();
->>>>>>> 15d3d7c6739efbbd579fe3e170e96b58e36f6c85
-                    /*ReservationAddView reservationAddView = new ReservationAddView();
-                    Reservation newReservation = reservationAddView.execute((model.getReservations().size() + 1) + "",model.get);
-                    , newReservation);
-                    boolean isItSaved = reservationAddController.execute();
-                    reservationAddView.successedMessages();
-                    execute(model);*/
-                    /* if (newReservation != null) {
-                        ReservationAddController reservationAddController = new ReservationAddController(model, newReservation);
-                        boolean isItSaved = reservationAddController.execute();
-                        userAddView.successedMessages();
-                        execute(model);
-                    } else {
-                        userAddView.failedMessages();
-                        selectedUserMenuItem = "UA";
-                        break;
-                    }
-                    UserAddController userAddController = new UserAddController(model,newUser);
-                    userAddController.execute();
-                    break;*/
                 case "RE":
-<<<<<<< HEAD
+
                     UserEditController userEditController = new UserEditController();
                     userEditController.execute();
                     break;
                 case "RD":
-                    UserDeleteController userDeleteController = new UserDeleteController();
-                    userDeleteController.execute();
-=======
-                    ReservationEditController reservationEditController = new ReservationEditController();
-                    reservationEditController.execute();
-                    break;
-                case "RD":
                     ReservationDeleteController reservationDeleteController=new ReservationDeleteController();
                     reservationDeleteController.execute();
->>>>>>> 15d3d7c6739efbbd579fe3e170e96b58e36f6c85
+
                     break;
                 case "E":
                     MainMenuController mainMenuController = new MainMenuController(model);

@@ -13,7 +13,7 @@ import static com.capgemini.Main.TEXT_RESET;
 
 public class ReservationDeleteController {
     Model model = new Model();
-    private String reservationId,roomNumber,canoeType,canoeId,date,duration;
+    String reservationId,roomNumber,canoeType,canoeId,date,duration;
     ReservationDeleteMenuView reservationDeleteMenuView = new ReservationDeleteMenuView();
     int count=-1;
 
@@ -38,7 +38,7 @@ public class ReservationDeleteController {
 
         if(check&&reservationDeleteMenuView.checkReservation()){
             delete(count);
-        }else if (check==false){
+        }else if (!check){
             System.out.println(GREEN_BOLD + "The reservation is not found please check the information and try again." + TEXT_RESET);
         }
 

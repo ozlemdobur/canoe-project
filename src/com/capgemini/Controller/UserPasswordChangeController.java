@@ -15,12 +15,14 @@ public class UserPasswordChangeController {
     UserPasswordChangeView userPasswordChangeView = new UserPasswordChangeView();
     String id,name,password,role,newPassword;
     Model model = new Model();
+    int count=-1;
     public void execute() throws FileNotFoundException {
         userPasswordChangeView.executeView();
         id= userPasswordChangeView.getInputId().trim().toUpperCase(Locale.ROOT);
         name=userPasswordChangeView.getInputName().trim().toUpperCase(Locale.ROOT);
         boolean check=false;
         for(User user : model.getUsers()){
+            count++;
             if(id.equals(user.getUserId())&&name.equals(user.getUserName())){
                 password=user.getPassword();
                 role=user.getRoleKey();
@@ -43,6 +45,7 @@ public class UserPasswordChangeController {
 
     private void write(String id, String name, String password, String role) throws FileNotFoundException {
         PrintWriter writer = new PrintWriter("src/com/capgemini/Model/UserDB");
+        model.getUsers().remove(count);
         writer.print("");
         for (User user : model.getUsers()) {
             writer.println(user.getUserId() + "," +

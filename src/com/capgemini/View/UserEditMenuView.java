@@ -58,8 +58,6 @@ public class UserEditMenuView {
         System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET+name);
         System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET+id);
         System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET+role);
-        System.out.println(GREEN_BOLD + "Password :" + TEXT_RESET+password);
-
     }
 
     public String askIfitisCorrect(){
