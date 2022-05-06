@@ -15,15 +15,16 @@ public class UserPasswordChangeController {
     UserPasswordChangeView userPasswordChangeView = new UserPasswordChangeView();
     String id,name,password,role,newPassword;
     Model model = new Model();
+    User changedUser;
     int count=-1;
     public void execute() throws FileNotFoundException {
         userPasswordChangeView.executeView();
         id= userPasswordChangeView.getInputId().trim().toUpperCase(Locale.ROOT);
-        name=userPasswordChangeView.getInputName().trim().toUpperCase(Locale.ROOT);
         boolean check=false;
         for(User user : model.getUsers()){
             count++;
-            if(id.equals(user.getUserId())&&name.equals(user.getUserName())){
+            if(id.equals(user.getUserId())){
+                name=user.getUserName();
                 password=user.getPassword();
                 role=user.getRoleKey();
                 check=true;
@@ -33,7 +34,9 @@ public class UserPasswordChangeController {
         if(check) {
             userPasswordChangeView.selectedUser(id, name, role, password);
             newPassword = userPasswordChangeView.getNewPassword();
-            write(id, name, newPassword, role);
+            changedUser =  new User(id,name,newPassword,role);
+            userPasswordChangeView.showChangedUser(changedUser);
+            if(userPasswordChangeView.aSave().equals("Y")){write(changedUser);}
         }else{
             System.out.println(GREEN_BOLD + "The user is not found please enter correct information" + TEXT_RESET);
         }
@@ -43,9 +46,9 @@ public class UserPasswordChangeController {
 
 
 
-    private void write(String id, String name, String password, String role) throws FileNotFoundException {
+    private void write(User changedUser) throws FileNotFoundException {
         PrintWriter writer = new PrintWriter("src/com/capgemini/Model/UserDB");
-        model.getUsers().remove(count);
+        model.getUsers().set(count,changedUser);
         writer.print("");
         for (User user : model.getUsers()) {
             writer.println(user.getUserId() + "," +
@@ -53,7 +56,6 @@ public class UserPasswordChangeController {
                     user.getPassword() + "," +
                     user.getRoleKey());
         }
-        writer.println(id+","+name+","+password+","+role);
         writer.close();
         userPasswordChangeView.successfulMessage();
     }

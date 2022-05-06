@@ -1,5 +1,7 @@
 package com.capgemini.View;
 
+import com.capgemini.Model.User;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -17,17 +19,15 @@ public class UserEditMenuView {
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "**********  USER EDIT MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Please enter the name and id of the user who you want to edit" + TEXT_RESET);
-        System.out.print(GREEN_BOLD + "Name : ");
-        editName = sc.nextLine();
+        System.out.println(GREEN_BOLD + "Please enter the id of the user who you want to edit" + TEXT_RESET);
         System.out.print(GREEN_BOLD + "ID : ");
         editId = sc.nextLine();
     }
 
     public String getNewRole() {
-        System.out.println(GREEN_BOLD + "Please enter New Role as Admin (AD), General Manager(GM), Receptionist(RE)" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Please enter New Role as Admin[AD], General Manager[GM], Receptionist[RE]" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "New Role :" + TEXT_RESET);
-        return sc.nextLine();
+        return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
 
     public String getNewId() {
@@ -39,31 +39,38 @@ public class UserEditMenuView {
     public String getNewName() {
         System.out.println(GREEN_BOLD + "Please enter New Name" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "New Name :" + TEXT_RESET);
-        return sc.nextLine();
+        return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
 
     public String askForChange() {
-        System.out.println(GREEN_BOLD + "Please chose which info you want to change Name(NM)-ID(ID)-Role(RL)" + TEXT_RESET);
-        return sc.nextLine();
+        System.out.println(GREEN_BOLD + "Please chose which info you want to change Name[NM]-Role[RL]" + TEXT_RESET);
+        return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
 
     public void successfulMessage(String chosenKey) {
-
+        System.out.println(TEXT_RED + "Congratulations " + chosenKey + " is changed successfully!!!!" + TEXT_RESET);
     }
 
-    public void selectedUser(String id, String name, String role, String password) {
+    public void selectedUser(String id, String name, String role) {
         System.out.println(GREEN_BOLD + "Here is the chosen User" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET + name);
         System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + id);
         System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + role);
-        System.out.println(GREEN_BOLD + "Password :" + TEXT_RESET + password);
-
     }
 
-    public String askIfitisCorrect() {
-        System.out.println(GREEN_BOLD + "Is it correct user ?(Y/N)" + TEXT_RESET);
-        return sc.nextLine();
+    public String askSave() {
+        System.out.println(GREEN_BOLD + "Do you want to save ? Yes[Y]/No[N]" + TEXT_RESET);
+        return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
+
+    public void editedUserView(User user) {
+        System.out.println(GREEN_BOLD + "Here is the chosen User" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET + user.getUserName());
+        System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + user.getUserId());
+        System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + user.getRoleKey());
+    }
+
+    public void warnMessage(){System.out.println(GREEN_BOLD + "You entered wrong key(s)" + TEXT_RESET);}
 
     public String getEditName() {
         return editName.trim().toUpperCase(Locale.ROOT);
@@ -73,6 +80,9 @@ public class UserEditMenuView {
         return editId.trim().toUpperCase(Locale.ROOT);
     }
 }
+
+
+
 
 
     /*
