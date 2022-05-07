@@ -22,10 +22,7 @@ public class ReservationController {
                     isItSuccessed = reservationAddController.execute();
                     if (isItSuccessed) {
                         execute(model);
-                    }/* else {
-                        selectedReservationMenuItem = "RA";
-                        break;
-                    }*/
+                    }
                 case "RE":
                     ReservationEditController reservationEditController = new ReservationEditController();
                     reservationEditController.execute();

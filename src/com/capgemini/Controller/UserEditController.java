@@ -2,7 +2,6 @@ package com.capgemini.Controller;
 
 import com.capgemini.Model.Model;
 import com.capgemini.Model.User;
-import com.capgemini.Model.Users;
 import com.capgemini.View.UserEditMenuView;
 
 import java.io.FileNotFoundException;
@@ -15,22 +14,22 @@ import static com.capgemini.Main.TEXT_RESET;
 public class UserEditController {
     String id, name, role, password, chosenKey;
     UserEditMenuView userEditMenuView = new UserEditMenuView();
-    Users users = new Users();
     Model model = new Model();
+    User editedUser;
     int count=-1;
 
     public void execute() throws FileNotFoundException {
         userEditMenuView.executeView();
-        name = userEditMenuView.getEditName();
         id = userEditMenuView.getEditId();
 
         boolean check = false;
         for (User user : model.getUsers()) {
             count++;
-            if (id.equals(user.getUserId()) && name.equals(user.getUserName())) {
+            if (id.equals(user.getUserId())) {
+                name=user.getUserName();
                 password = user.getPassword();
                 role = user.getRoleKey();
-                userEditMenuView.selectedUser(id, name, role, password);
+                userEditMenuView.selectedUser(id, name, role);
                 check = true;
                 break;
             }
@@ -38,16 +37,20 @@ public class UserEditController {
         if (check) {
             switch (chosenKey = userEditMenuView.askForChange().trim().toUpperCase(Locale.ROOT)) {
                 case "NM":
-                    write(id, userEditMenuView.getNewName().trim().toUpperCase(Locale.ROOT), password, role);
-                    break;
-                case "ID":
-                    write(userEditMenuView.getNewId().trim(), name, password, role);
+                    editedUser = new User(id, userEditMenuView.getNewName(), password, role);
+                    userEditMenuView.editedUserView(editedUser);
+                    if(userEditMenuView.askSave().equals("Y")){write(editedUser);}
                     break;
                 case "RL":
-                    write(id, name, password, userEditMenuView.getNewRole().trim().toUpperCase(Locale.ROOT));
+                    String newRole = userEditMenuView.getNewRole();
+                    editedUser = new User(id, name, password, newRole);
+                    if(newRole.equals("AD")||newRole.equals("GM")||newRole.equals("RE")){
+                        userEditMenuView.editedUserView(editedUser);
+                    }else{userEditMenuView.warnMessage();break;}
+                    if(userEditMenuView.askSave().equals("Y")){write(editedUser);}
                     break;
                 default:
-                    System.out.println(GREEN_BOLD + "You entered wrong key(s)" + TEXT_RESET);
+                    userEditMenuView.warnMessage();
             }
 
         }else{
@@ -56,9 +59,9 @@ public class UserEditController {
     }
 
 
-    private void write(String id, String name, String password, String role) throws FileNotFoundException {
+    private void write(User editedUser) throws FileNotFoundException {
         PrintWriter writer = new PrintWriter("src/com/capgemini/Model/UserDB");
-        model.getUsers().remove(count);
+        model.getUsers().set(count,editedUser);
         writer.print("");
         for (User user : model.getUsers()) {
             writer.println(user.getUserId() + "," +
@@ -66,7 +69,6 @@ public class UserEditController {
                     user.getPassword() + "," +
                     user.getRoleKey());
         }
-        writer.println(id+","+name+","+password+","+role);
         writer.close();
         userEditMenuView.successfulMessage(chosenKey);
     }

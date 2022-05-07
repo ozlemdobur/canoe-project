@@ -16,9 +16,7 @@ public class UserDeleteView {
         System.out.println(GREEN_BOLD + "**********  USER DELETE MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "***************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information to delete an User" + TEXT_RESET);
-        System.out.print(GREEN_BOLD + "Name : ");
-        name = sc.nextLine();
-        System.out.println(GREEN_BOLD + "Id : ");
+        System.out.println(GREEN_BOLD + "ID : ");
         id = sc.nextLine();
 
     }
@@ -35,12 +33,11 @@ public class UserDeleteView {
         System.out.println(TEXT_RED + "You deleted the user!" + TEXT_RESET);
     }
 
-    public void selectedUser(String id, String name, String role, String password) {
+    public void selectedUser(String id, String name, String role) {
         System.out.println(GREEN_BOLD + "Here is the chosen User" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET + name);
         System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + id);
         System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + role);
-        System.out.println(GREEN_BOLD + "Password :" + TEXT_RESET + password);
 
     }
 
@@ -53,4 +50,7 @@ public class UserDeleteView {
         return false;
     }
 
+    public void nFound() {
+        System.out.println(GREEN_BOLD + "The user is not found please check information and try again." + TEXT_RESET);
+    }
 }
