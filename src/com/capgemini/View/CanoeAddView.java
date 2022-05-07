@@ -3,8 +3,7 @@ package com.capgemini.View;
 import com.capgemini.Model.Canoe;
 import java.util.Scanner;
 
-import static com.capgemini.Main.GREEN_BOLD;
-import static com.capgemini.Main.TEXT_RESET;
+import static com.capgemini.Main.*;
 
 public class CanoeAddView {
     public Canoe execute(String newIdForNewCanoe) {
@@ -34,10 +33,10 @@ public class CanoeAddView {
     }
 
     public void successedMessages() {
-        System.out.println(GREEN_BOLD + "You added a new canoe!"+ TEXT_RESET);
+        System.out.println(TEXT_RED + "You added a new canoe!"+ TEXT_RESET);
     }
     public void failedMessages() {
-        System.out.println(GREEN_BOLD + "Please fill in the all fields!"+ TEXT_RESET);
+        System.out.println(TEXT_RED + "Please fill in the all fields!"+ TEXT_RESET);
     }
 
 }

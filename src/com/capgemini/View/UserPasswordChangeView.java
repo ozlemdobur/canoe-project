@@ -47,7 +47,7 @@ public class UserPasswordChangeView {
     }
 
     public void successfulMessage() {
-        System.out.println(TEXT_RED + "Congratulations password changed successfully!!!!" + TEXT_RESET);
+        System.out.println(TEXT_RED + "You changed the password successfully!!!!" + TEXT_RESET);
 
     }
 }

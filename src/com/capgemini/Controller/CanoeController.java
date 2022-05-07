@@ -6,11 +6,12 @@ import com.capgemini.View.CanoeDeleteView;
 import com.capgemini.View.CanoeMenuView;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CanoeController {
-    public void execute(Model model) throws IOException {
+    public void execute(Model model) throws IOException, ParseException {
         boolean selectedAnyMenu = true;
         while (selectedAnyMenu) {
             CanoeMenuView canoeMenuView = new CanoeMenuView();

@@ -11,9 +11,9 @@ public class ReservationMenuView {
 
     public String show(List activeDetailMenu) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(GREEN_BOLD + "******************************" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "*************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "********  RESERVATION MENU  *********" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "******************************" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "*************************************" + TEXT_RESET);
         for (int i = 0; i < activeDetailMenu.size(); i++) {
             System.out.println(activeDetailMenu.get(i));
         }
