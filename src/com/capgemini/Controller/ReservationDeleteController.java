@@ -37,7 +37,7 @@ public class ReservationDeleteController {
 
         if (check && reservationDeleteMenuView.checkReservation()) {
             delete(count);
-        } else if (check == false) {
+        } else if (!check) {
             System.out.println(TEXT_RED + "The reservation is not found please check the information and try again." + TEXT_RESET);
         }
 

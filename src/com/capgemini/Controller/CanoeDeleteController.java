@@ -5,11 +5,12 @@ import com.capgemini.Model.Canoes;
 import com.capgemini.View.CanoeDeleteView;
 import java.io.*;
 
-public class CanoeDeleteController {
+public class CanoeDeleteController<check> {
     String id, type, numberOfTheSeats, timeOfTheMinimumTrip, tripPrice;
     CanoeDeleteView canoeDeleteView = new CanoeDeleteView();
     Canoes canoes = new Canoes();
     int count = -1;
+
 
     public void execute() throws FileNotFoundException {
         canoeDeleteView.execute();
@@ -28,9 +29,14 @@ public class CanoeDeleteController {
             }
         }
 
-        if (check && canoeDeleteView.checkUser()) {
+
+        if (check&&canoeDeleteView.checkUser()) {
+        try {
             delete(count);
-        } else if (!check) {
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    } else if (!check) {
             canoeDeleteView.nFound();
         }
     }
