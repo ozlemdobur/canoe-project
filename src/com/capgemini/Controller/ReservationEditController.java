@@ -8,9 +8,10 @@ import com.capgemini.View.ReservationEditMenuView;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.*;
 
 import static com.capgemini.Main.GREEN_BOLD;
 import static com.capgemini.Main.TEXT_RESET;
@@ -58,32 +59,41 @@ public class ReservationEditController{
             switch (chosenKey = reservationEditMenuView.askForChange().trim().toUpperCase(Locale.ROOT)) {
                 case "RN":
                     editedReservation = new Reservation(reservationId,reservationEditMenuView.getNewRoomNumber(),canoeType,canoeId,date,duration,startTime,endTime);
-                if(checkFreeReservation(editedReservation)) {
                     write(editedReservation);
-                }else {reservationEditMenuView.warningMessage();
-                    reservationEditMenuView.noSaved();
-                }
                     break;
                 case "CT":
                     String newCanoeType =reservationEditMenuView.getNewCanoeType();
-                    String newCanoeID = checkAvailableCanoeType(newCanoeType,date,startTime,endTime);
-
+                    //String newCanoeID = checkAvailableCanoeType(newCanoeType,date,startTime,endTime);
+                    String newCanoeID = reservationProgressController.whichCanoeIsFree(date,newCanoeType,startTime);
                     if(newCanoeID==null){
                         reservationEditMenuView.warningMessage();
                         break;
                     }
 
                     editedReservation = new Reservation(reservationId, roomNumber,newCanoeType, newCanoeID, date, duration,startTime,endTime);
-                    if(checkFreeReservation(editedReservation)) {
+                    write(editedReservation);
+                    /*if(checkFreeReservation(editedReservation)) {
                     write(editedReservation);
                     break;
                     }else {reservationEditMenuView.warningMessage();
                     reservationEditMenuView.noSaved();
-                    break;
+
                     }
+                     */
+                    break;
+
                 case "DT":
-                    editedReservation= new Reservation(reservationId, roomNumber, canoeType, canoeId, reservationEditMenuView.getNewDate(), duration,startTime,endTime);
-                    if(checkFreeReservation(editedReservation)) {
+                    String newDuration = reservationEditMenuView.getNewDuration();
+                    editedReservation= new Reservation(reservationId, roomNumber, canoeType, canoeId, newDuration, duration,startTime,endTime);
+                    String newdtCanoeID = reservationProgressController.whichCanoeIsFree(editedReservation.getDate(),editedReservation.getCanoeType(),editedReservation.getStartTime());
+                   if(newdtCanoeID==null){
+                       reservationEditMenuView.warningMessage();
+                       break;
+                }
+                   editedReservation= new Reservation(reservationId,roomNumber,canoeType,canoeId,date,newDuration,startTime,endTime);
+
+
+                    /* if(checkFreeReservation(editedReservation)) {
                         write(editedReservation);
                         break;
                     }else {reservationEditMenuView.warningMessage();
@@ -91,9 +101,10 @@ public class ReservationEditController{
                         break;
                     }
 
+                    */
+
                 case "DR":
-                    duration=reservationEditMenuView.getNewDuration();
-                    editedReservation= new Reservation(reservationId, roomNumber, canoeType, canoeId, date,duration,startTime,reservationProgressController.endTimeCalculating(startTime,duration));
+                    editedReservation= new Reservation(reservationId, roomNumber, canoeType, canoeId, date,reservationEditMenuView.getNewDuration(),startTime,reservationProgressController.endTimeCalculating(startTime,duration));
                 if(checkFreeReservation(editedReservation)) {
                     write(editedReservation);
                     break;
@@ -121,7 +132,8 @@ public class ReservationEditController{
 
 
     private void write(Reservation saveReservation) throws FileNotFoundException {
-        if(reservationEditMenuView.saveReservation()) {
+        String cost = costCalculating(saveReservation.getDuration(),saveReservation.getCanoeId());
+        if(reservationEditMenuView.saveReservation(cost,saveReservation)) {
             PrintWriter writer = new PrintWriter("src/com/capgemini/Model/ReservationDB");
             model.getReservations().set(count, saveReservation);
             writer.print("");
@@ -158,13 +170,12 @@ public class ReservationEditController{
         String canoeID = cReservation.getCanoeId();
         String date = cReservation.getDate();
         for (Reservation reservation: model.getReservations()){
-           if(date.equals(reservation.getDate())){
-               if(startT.equals(reservation.getStartTime())){
-                   if(canoeID.equals(reservation.getCanoeId())){
+            if(!reservation.equals(cReservation)){
+                 if(!reservation.equals(cReservation)&&date.equals(reservation.getDate())&&(startT.equals(reservation.getStartTime())||endT.equals(reservation.getEndTime()))&&canoeID.equals(reservation.getCanoeId())){
                        return false;
-                   }
-               }
-           }
+                 }
+            }
+
         }
         return true;
     }
@@ -173,7 +184,7 @@ public class ReservationEditController{
         List<Canoe> availableCanoes = new ArrayList<>();
         List<Canoe> selectedCanoesType = new ArrayList<>();
         for (Canoe canoe : model.getCanoes()) {
-            if (canoe.getCanoeType().equals(newCanoeType.trim().toUpperCase(Locale.ROOT))) {
+            if (canoe.getCanoeType().trim().equals(newCanoeType.trim().toUpperCase(Locale.ROOT))) {
                 selectedCanoesType.add(canoe);
             }
         }
@@ -199,7 +210,53 @@ public class ReservationEditController{
         else return availableCanoes.get(0).getCanoeId();
     }
 
+    public String costCalculating(String duration, String canoeId) {
+        double price = 0;
+        int intDuration = Integer.parseInt(duration.trim());
+        for (Canoe canoe : model.getCanoes()) {
+            if (canoe.getCanoeId().equals(canoeId)) {
+                price = Double.parseDouble(canoe.getTripPrice().trim());
+            }
+        }
+        double totalCost = intDuration * price / 30;
+        return totalCost + "";
+    }
+
+    public String checkAvailabilitycanoeminutes(Reservation reservation, String newCanoeType) throws ParseException {
+        List<Canoe> availableCanoes = new ArrayList<>();
+        List<Canoe> selectedCanoesType = new ArrayList<>();
+
+        for (Canoe canoe : model.getCanoes()) {
+            if (canoe.getCanoeType().trim().equals(newCanoeType.trim().toUpperCase(Locale.ROOT))) {
+                selectedCanoesType.add(canoe);
+            }
+        }
+
+        for(Reservation reservation1: model.getReservations()){
+            if (date.equals(reservation.getDate()) && (startTime.equals(reservation.getStartTime()))) {
+                for (Canoe canoe : selectedCanoesType) {
+                    if (!reservation.getCanoeId().equals(canoe.getCanoeId())) {
+                        availableCanoes.add(canoe);
+                    }
+                }
+            }
+        }
+
+
+        for(int i = 0 ; i<=Integer.parseInt(reservation.getDuration()); i++){
+            String myTime = reservation.getStartTime();
+            SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+            Date d = df.parse(myTime);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(d);
+            cal.add(Calendar.MINUTE, 1);
+
+        }
+
+        return null;
+    }
 }
+
 
 
 /*

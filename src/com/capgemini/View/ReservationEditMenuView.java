@@ -60,7 +60,16 @@ public class ReservationEditMenuView {
         }
         return false;
     }
-    public boolean saveReservation() {
+    public boolean saveReservation(String cost, Reservation reservation) {
+        System.out.println(GREEN_BOLD + "Reservation ID :" + TEXT_RESET + reservation.getReservationId());
+        System.out.println(GREEN_BOLD + "Room Number :" + TEXT_RESET + reservation.getRoomNumber());
+        System.out.println(GREEN_BOLD + "Canoe Type :" + TEXT_RESET + reservation.getCanoeType());
+        System.out.println(GREEN_BOLD + "Canoe ID :" + TEXT_RESET + reservation.getCanoeId());
+        System.out.println(GREEN_BOLD + "Date :" + TEXT_RESET + reservation.getDate());
+        System.out.println(GREEN_BOLD + "Duration :" + TEXT_RESET + reservation.getDuration());
+        System.out.println(GREEN_BOLD + "Start time :" + TEXT_RESET + reservation.getStartTime());
+        System.out.println(GREEN_BOLD + "End Time :" + TEXT_RESET + reservation.getEndTime());
+        System.out.println(TEXT_RED + "Cost :" + TEXT_RESET + cost);
         System.out.println(TEXT_RED + "Do yu want to save the changes? Yes[Y]/No[N]" + TEXT_RESET);
         String yesorno = sc.nextLine().trim().toUpperCase(Locale.ROOT);
         if (yesorno.equals("Y")) {
@@ -84,7 +93,7 @@ public class ReservationEditMenuView {
     }
 
     public String getNewCanoeType() {
-        System.out.println(GREEN_BOLD + "Please enter New Canoe Type" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Please enter New Canoe Type [K] [R] [S] [E]" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "New Canoe Type :" + TEXT_RESET);
         return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
