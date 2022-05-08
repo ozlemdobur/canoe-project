@@ -9,16 +9,17 @@ import static com.capgemini.Main.TEXT_RESET;
 
 public class MainMenuView {
     String selectedMainMenuItem;
-    public String showMainMenu(List<String> mainMenuList){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(GREEN_BOLD +"******************************"+ TEXT_RESET);
-        System.out.println(GREEN_BOLD +"********  MAIN MENU  *********"+ TEXT_RESET);
-        System.out.println(GREEN_BOLD +"******************************"+ TEXT_RESET);
 
-        for (int i = 0; i < mainMenuList.size() ; i++) {
+    public String showMainMenu(List<String> mainMenuList) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(GREEN_BOLD + "******************************" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "********  MAIN MENU  *********" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "******************************" + TEXT_RESET);
+
+        for (int i = 0; i < mainMenuList.size(); i++) {
             System.out.println(mainMenuList.get(i));
         }
-        System.out.print(GREEN_BOLD +"Please select the menu : "+ TEXT_RESET);
+        System.out.print(GREEN_BOLD + "Please select the menu : " + TEXT_RESET);
         selectedMainMenuItem = scanner.nextLine().toUpperCase();
         return selectedMainMenuItem;
     }

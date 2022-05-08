@@ -18,7 +18,7 @@ public class ReservationAddView {
         System.out.println(GREEN_BOLD + "**********  RESERVATION ADD MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information for new Reservation" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Reservation Id : " + TEXT_RESET + progressController.newIdForNewReservation());
+        System.out.println(GREEN_BOLD + "Reservation Id : " + progressController.newIdForNewReservation() + TEXT_RESET);
         System.out.print(GREEN_BOLD + "Room Number : " + TEXT_RESET);
         roomNumber = scanner.nextLine();
         System.out.print(GREEN_BOLD + "Date [dd-mm-yyyy] : " + TEXT_RESET);
@@ -39,8 +39,8 @@ public class ReservationAddView {
             duration = progressController.defaultCanoeDuration(canoeId);
         }
         String cost = progressController.costCalculating(duration, canoeId);
-        System.out.println(TEXT_RED + "TOTAL COST : " + cost);
-        System.out.print(TEXT_RED + "DO YOU WANT TO ADD NEW RESERVATION [ Y / N]) " + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "TOTAL COST : " + cost + TEXT_RESET);
+        System.out.print(GREEN_BOLD + "DO YOU WANT TO ADD NEW RESERVATION [ Y / N]) " + TEXT_RESET);
         String answer = scanner.nextLine().toUpperCase();
         if (answer.equals("Y")) {
             if (!progressController.newIdForNewReservation().trim().equals("") && !roomNumber.trim().equals("") && !canoeType.trim().equals("") && !reservationDate.trim().equals("") && !duration.trim().equals("")) {
@@ -56,7 +56,7 @@ public class ReservationAddView {
     }
 
     public void warningMessages() {
-        System.out.println(TEXT_RED + "The canoe type is full.Please select others canoe type!" + TEXT_RESET);
+        System.out.println(TEXT_RED + "Please select others canoe type!" + TEXT_RESET);
     }
 
     public void failedMessages() {

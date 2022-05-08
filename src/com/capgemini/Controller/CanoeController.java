@@ -4,7 +4,6 @@ import com.capgemini.Model.*;
 import com.capgemini.View.CanoeAddView;
 import com.capgemini.View.CanoeDeleteView;
 import com.capgemini.View.CanoeMenuView;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ public class CanoeController {
         boolean selectedAnyMenu = true;
         while (selectedAnyMenu) {
             CanoeMenuView canoeMenuView = new CanoeMenuView();
-            List canoeMenuList = canoeMenuList(model);
+            List<String> canoeMenuList = canoeMenuList(model);
             String selectedCanoeMenuItem = canoeMenuView.show(canoeMenuList);
             switch (selectedCanoeMenuItem) {
                 case "CA" -> {
@@ -23,7 +22,7 @@ public class CanoeController {
                     if (newCanoe != null) {
                         CanoeAddController canoeAddController = new CanoeAddController(model, newCanoe);
                         canoeAddController.execute();
-                        canoeAddView.successedMessages();
+                        canoeAddView.succeededMessages();
                         execute(model);
                     } else {
                         canoeAddView.failedMessages();

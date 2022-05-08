@@ -14,7 +14,6 @@ public class ReservationController {
             ReservationMenuView reservationMenuView = new ReservationMenuView();
             List reservationMenuList = reservationMenuList(model);
             String selectedReservationMenuItem = reservationMenuView.show(reservationMenuList);
-
             boolean isItSuccessed ;
             switch (selectedReservationMenuItem) {
                 case "RA":
@@ -22,19 +21,14 @@ public class ReservationController {
                     isItSuccessed = reservationAddController.execute();
                     if (isItSuccessed) {
                         execute(model);
-                    } else {
-                        selectedReservationMenuItem = "RA";
-                        break;
                     }
                 case "RE":
-
-                    UserEditController userEditController = new UserEditController();
-                    userEditController.execute();
+                    ReservationEditController reservationEditController = new ReservationEditController();
+                    reservationEditController.execute();
                     break;
                 case "RD":
-                    ReservationDeleteController reservationDeleteController=new ReservationDeleteController();
+                    ReservationDeleteController reservationDeleteController = new ReservationDeleteController();
                     reservationDeleteController.execute();
-
                     break;
                 case "E":
                     MainMenuController mainMenuController = new MainMenuController(model);
@@ -45,21 +39,21 @@ public class ReservationController {
     }
 
     public List<String> reservationMenuList(Model model) {
-        List<String> userMenuList = new ArrayList<String>();
-        List<String> userMenuViewKeyList = new ArrayList<String>();
+        List<String> reservationMenuList = new ArrayList<String>();
+        List<String> reservationMenuViewKeyList = new ArrayList<String>();
         for (Permission permission : model.getPermissions()) {
             if (model.getActiveUser().getRoleKey().equals(permission.getpRoleKey()) &&
                     permission.getpViewKey().length() == 2 && permission.getpViewKey().startsWith("R")) {
-                userMenuViewKeyList.add(permission.getpViewKey());
+                reservationMenuViewKeyList.add(permission.getpViewKey());
             }
         }
         for (View view : model.getViews()) {
-            if (userMenuViewKeyList.contains(view.getViewKey())) {
-                userMenuList.add(view.getViewName() + " [" + view.getViewKey() + "]");
+            if (reservationMenuViewKeyList.contains(view.getViewKey())) {
+                reservationMenuList.add(view.getViewName() + " [" + view.getViewKey() + "]");
             }
         }
-        userMenuList.add("Exit (E)");
-        return userMenuList;
+        reservationMenuList.add("Exit (E)");
+        return reservationMenuList;
     }
 }
 

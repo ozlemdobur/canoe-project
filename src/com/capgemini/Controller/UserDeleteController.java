@@ -18,32 +18,16 @@ public class UserDeleteController {
 
 
     public void execute() throws FileNotFoundException {
-
         userDeleteMenuView.execute();
         id= userDeleteMenuView.getId();
-        name= userDeleteMenuView.getName();
-
-        /*
-        for (int i = 0; i < users.getUsers().size(); i++) {
-            String checkId = users.getUsers().get(i).getUserId();
-            String checkName = users.getUsers().get(i).getUserName();
-            if (id.equals(checkId) && name.equals(checkName)) {
-                password = users.getUsers().get(i).getPassword();
-                role = users.getUsers().get(i).getRoleKey();
-                users.getUsers().remove(i);
-                users.setUsers(users.getUsers());
-            }
-        }
-         */
-
         boolean check = false;
-
         for (User user : users.getUsers()) {
             count++;
-            if (id.equals(user.getUserId()) && name.equals(user.getUserName())) {
+            if (id.equals(user.getUserId())) {
+                name=user.getUserName();
                 password = user.getPassword();
                 role = user.getRoleKey();
-                userDeleteMenuView.selectedUser(id,name,role,password);
+                userDeleteMenuView.selectedUser(id, name, role);
                 check = true;
                 break;
             }
@@ -51,10 +35,9 @@ public class UserDeleteController {
 
         if(check&& userDeleteMenuView.checkUser()){
             delete(count);
-        }else if (check==false){
-            System.out.println(GREEN_BOLD + "The user is not found please check information and try again." + TEXT_RESET);
+        }else if (!check){
+            userDeleteMenuView.nFound();
         }
-
 
 
     }
@@ -73,22 +56,4 @@ public class UserDeleteController {
         userDeleteMenuView.successMessage();
     }
 }
-
-
-/*
-
-
-
-
-         for (User user : users.getUsers()) {
-            String checkId = user.getUserId();
-            String checkName = user.getUserName();
-            if (id.equals(checkId) && name.equals(checkName)) {
-                password = user.getPassword();
-                role = user.getRoleKey();
-                users.getUsers().remove(user);
-                users.setUsers(users.getUsers());
-            }
-        }
- */
 
