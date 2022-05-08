@@ -34,7 +34,5 @@ public class CanoeAddView {
     public void succeededMessages() {
         System.out.println(TEXT_RED + "You added a new canoe!" + TEXT_RESET);
     }
-    public void failedMessages() {
-        System.out.println(TEXT_RED + "Please fill in the all fields!" + TEXT_RESET);
-    }
+    public void failedMessages() { System.out.println(TEXT_RED + "Please fill in the all fields!" + TEXT_RESET); }
 }

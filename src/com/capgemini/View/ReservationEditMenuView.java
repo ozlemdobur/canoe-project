@@ -21,6 +21,9 @@ public class ReservationEditMenuView {
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "**********  Reservation Edit MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "********************************************" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "**********  RESERVATION EDIT MENU  *********" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "********************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information to edit a Reservation" + TEXT_RESET);
         System.out.print(GREEN_BOLD + "Reservation ID :");
         inputReservationId = sc.nextLine();
@@ -63,6 +66,7 @@ public class ReservationEditMenuView {
 
     public void successfulMessage(String chosenKey) {
         System.out.println(TEXT_RED + "Congratulations " + chosenKey + " is changed successfully!!!!" + TEXT_RESET);
+        System.out.println(TEXT_RED + "You changed the reservation !" + TEXT_RESET);
 
     }
 
@@ -101,5 +105,4 @@ public class ReservationEditMenuView {
         System.out.println(GREEN_BOLD + "New Duration :" + TEXT_RESET);
         return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
-
 }

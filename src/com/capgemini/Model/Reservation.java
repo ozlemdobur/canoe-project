@@ -7,16 +7,20 @@ public class Reservation {
     private String canoeId;
     private String date;
     private String duration;
+    private String startTime;
+    private String endTime;
     public Reservation() {
     }
 
-    public Reservation(String reservationId, String roomNumber, String canoeType, String canoeId, String date, String duration) {
+    public Reservation(String reservationId, String roomNumber, String canoeType, String canoeId, String date, String duration,String startTime, String endTime) {
         this.reservationId = reservationId;
         this.roomNumber = roomNumber;
         this.canoeType = canoeType;
         this.canoeId = canoeId;
         this.date = date;
         this.duration = duration;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     @Override
@@ -28,6 +32,8 @@ public class Reservation {
                 ", canoeId='" + canoeId + '\'' +
                 ", date='" + date + '\'' +
                 ", duration='" + duration + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
                 '}';
     }
 
@@ -77,5 +83,21 @@ public class Reservation {
 
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 }

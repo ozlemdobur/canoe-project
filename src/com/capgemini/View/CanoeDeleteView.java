@@ -22,10 +22,6 @@ public class CanoeDeleteView {
         return id.trim().toUpperCase(Locale.ROOT);
     }
 
-    public void successMessage() {
-        System.out.println(TEXT_RED + "You deleted the canoe successfully!" + TEXT_RESET);
-    }
-
     public void selectedCanoe(String id, String type, String seats, String minimumTrip, String price) {
         System.out.println(TEXT_RED + "Here is the selected canoe" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + id);
@@ -41,7 +37,11 @@ public class CanoeDeleteView {
         return yesOrNo.equals("Y");
     }
 
-    public void nFound() {
-        System.out.println(TEXT_RED + "The canoe is not found please check information and try again." + TEXT_RESET);
+    public void nFound() { System.out.println(TEXT_RED + "The canoe is not found please check information and try again." + TEXT_RESET); }
+    public void successMessage() {
+        System.out.println(TEXT_RED + "You deleted the canoe!"+ TEXT_RESET);
+    }
+    public void failMessage() {
+        System.out.println(TEXT_RED + "Please fill in the all fields with correct information!"+ TEXT_RESET);
     }
 }

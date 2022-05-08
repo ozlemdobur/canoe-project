@@ -12,6 +12,7 @@ public class ReservationDeleteMenuView {
     public void execute() {
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "**********  Reservation DELETE MENU  *********" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "**********  RESERVATION DELETE MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information to delete a Reservation" + TEXT_RESET);
         System.out.print(GREEN_BOLD + "Reservation ID :" + TEXT_RESET);
@@ -50,5 +51,6 @@ public class ReservationDeleteMenuView {
 
     public void successMessage() {
         System.out.println(TEXT_RED + "Congratulations the reservation is deleted successfully" + TEXT_RESET);
+        System.out.println(TEXT_RED + "You deleted the reservation!" + TEXT_RESET);
     }
 }

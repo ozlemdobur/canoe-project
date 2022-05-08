@@ -27,6 +27,7 @@ public class UserDeleteView {
 
     public void successMessage() {
         System.out.println(TEXT_RED + "You deleted the user Successfully!!!!" + TEXT_RESET);
+        System.out.println(TEXT_RED + "You deleted the user!" + TEXT_RESET);
     }
 
     public void selectedUser(String id, String name, String role) {
