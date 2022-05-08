@@ -11,30 +11,23 @@ import java.text.ParseException;
 
 public class ReservationAddController {
     private Model model;
-    private Reservation newReservation;
 
     public ReservationAddController(Model model) {
         this.model = model;
     }
 
-    public boolean execute() throws ParseException {
+    public void execute() throws ParseException {
         ReservationAddView reservationAddView = new ReservationAddView();
         ReservationProgressController progressController = new ReservationProgressController(model);
         Reservation newReservation = reservationAddView.execute(progressController);        //Reservation newReservation = reservationAddView.execute(model,(model.getReservations().size()+1)+"");
-        if(newReservation.getReservationId() == null){
-            return false;
-        }
-        boolean isItSaved = newRecordForAddReservation(newReservation);
-        if (isItSaved) {
-            reservationAddView.successedMessages();
-            return true;
+        if (newReservation != null) {
+            newRecordForAddReservation(newReservation);
         } else {
             reservationAddView.failedMessages();
-            return false;
         }
     }
 
-    public boolean newRecordForAddReservation(Reservation newReservation) {
+    public void newRecordForAddReservation(Reservation newReservation) {
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(new File("src/com/capgemini/Model/ReservationDB"));
@@ -49,11 +42,9 @@ public class ReservationAddController {
                     reservations.getCanoeId() + "," +
                     reservations.getDate() + "," +
                     reservations.getDuration() + "," +
-                    reservations.getStartTime()+ "," +
+                    reservations.getStartTime() + "," +
                     reservations.getEndTime());
         }
         writer.close();
-        return true;
-
     }
 }

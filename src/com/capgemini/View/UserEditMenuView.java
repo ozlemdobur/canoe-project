@@ -15,7 +15,6 @@ public class UserEditMenuView {
     String editName, editId;
 
     public void executeView() {
-
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "**********  USER EDIT MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
@@ -70,7 +69,9 @@ public class UserEditMenuView {
         System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + user.getRoleKey());
     }
 
-    public void warnMessage(){System.out.println(GREEN_BOLD + "You entered wrong key(s)" + TEXT_RESET);}
+    public void warnMessage() {
+        System.out.println(GREEN_BOLD + "You entered wrong key(s)" + TEXT_RESET);
+    }
 
     public String getEditName() {
         return editName.trim().toUpperCase(Locale.ROOT);
