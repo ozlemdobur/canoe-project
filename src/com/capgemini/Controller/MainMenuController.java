@@ -4,10 +4,7 @@ import com.capgemini.Model.Model;
 import com.capgemini.Model.Permission;
 import com.capgemini.Model.View;
 import com.capgemini.View.MainMenuView;
-<<<<<<< HEAD
 
-=======
->>>>>>> f7c814534c55a6a83c96d7bfe63d43077f6cb9cb
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;

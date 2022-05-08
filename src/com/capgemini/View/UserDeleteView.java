@@ -10,13 +10,9 @@ public class UserDeleteView {
     String id, name;
 
     public void execute() {
-<<<<<<< HEAD
         System.out.println(GREEN_BOLD + "***************************************" + TEXT_RESET);
-=======
-        System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
->>>>>>> f7c814534c55a6a83c96d7bfe63d43077f6cb9cb
         System.out.println(GREEN_BOLD + "**********  USER DELETE MENU  *********" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "***************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information to delete an User" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "ID : ");
         id = sc.nextLine();
