@@ -6,22 +6,23 @@ import com.capgemini.Model.View;
 import com.capgemini.View.LoginView;
 import com.capgemini.View.MainMenuView;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainMenuController {
-    public Model model;
-    public MainMenuController(Model model){
+    private Model model;
+
+    public MainMenuController(Model model) {
         this.model = model;
     }
 
     public void execute(boolean loginStatus) throws IOException, ParseException {
         while (loginStatus) {
             MainMenuView mainMenuView = new MainMenuView();
-            String selectedMainMenuItem = mainMenuView.showMainMenu(mainMenuList(model));
+            List<String> mainMenuList = mainMenuList(model);
+            String selectedMainMenuItem = mainMenuView.showMainMenu(mainMenuList);
             switch (selectedMainMenuItem) {
                 case "R":
                     ReservationController reservationController = new ReservationController();
@@ -43,7 +44,6 @@ public class MainMenuController {
 
     public List<String> mainMenuList(Model model) {
         List<String> mainMenuList = new ArrayList<String>();
-        // Model model = new Model();
         for (Permission permission : model.getPermissions()) {
             if (model.getActiveUser().getRoleKey().equals(permission.getpRoleKey()) &&
                     permission.getpViewKey().length() == 1) {

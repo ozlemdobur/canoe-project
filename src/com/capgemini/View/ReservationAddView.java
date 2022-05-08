@@ -32,16 +32,16 @@ public class ReservationAddView {
         System.out.print(GREEN_BOLD + "Date [dd-mm-yyyy] : " + TEXT_RESET);
         reservationDate = scanner.nextLine();
         //Control the date if it is before today
-        if (progressController.dateChecking(reservationDate)) {
+        if (!progressController.dateChecking(reservationDate)) {
             System.out.println(TEXT_RED + "Please enter the correct day format!" + TEXT_RESET);
-            return new Reservation();
+            return null;
         }
         //Starting Time -- Control the time if it is correct type
         System.out.print(GREEN_BOLD + "Start Time [ hh:mm ] : " + TEXT_RESET);
         startTime = scanner.nextLine().toUpperCase();
         if (!startTime.contains(":")) {
             System.out.println(TEXT_RED + "Please enter the correct time format!" + TEXT_RESET);
-            return new Reservation();
+            return null;
         }
         //Duration of the trip Invoke the default trip from the canoedb
         duration = progressController.defaultCanoeDuration(canoeType);
@@ -69,10 +69,14 @@ public class ReservationAddView {
         if (answer.equals("Y")) {
             if (!progressController.newIdForNewReservation().trim().equals("") && !roomNumber.trim().equals("") && !canoeType.trim().equals("") && !reservationDate.trim().equals("") && !duration.trim().equals("")) {
                 Reservation newReservation = new Reservation(progressController.newIdForNewReservation(), roomNumber, canoeType, canoeId, reservationDate, duration, startTime, endTime);
+                successedMessages();
                 return newReservation;
+            }else{
+                failedMessages();
+                return null;
             }
         }
-        return new Reservation();
+        return null;
     }
 
     public void successedMessages() {
@@ -84,6 +88,6 @@ public class ReservationAddView {
     }
 
     public void failedMessages() {
-        System.out.println(TEXT_RED + "Please fill in the all fields!" + TEXT_RESET);
+        System.out.println(TEXT_RED + "You didn't add a new reservation!" + TEXT_RESET);
     }
 }

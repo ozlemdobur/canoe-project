@@ -10,8 +10,6 @@ public class UserDeleteView {
     String id, name;
 
     public void execute() {
-
-
         System.out.println(GREEN_BOLD + "***************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "**********  USER DELETE MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "***************************************" + TEXT_RESET);
@@ -51,6 +49,6 @@ public class UserDeleteView {
     }
 
     public void nFound() {
-        System.out.println(GREEN_BOLD + "The user is not found please check information and try again." + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "The user is not found. Please check information and try again." + TEXT_RESET);
     }
 }

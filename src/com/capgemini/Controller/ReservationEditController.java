@@ -52,7 +52,6 @@ public class ReservationEditController {
             System.out.println(GREEN_BOLD + "The reservation is not found please check the information and try again." + TEXT_RESET);
         }
     }
-
     private void write(String reservationId, String roomNumber, String canoeType, String canoeId, String date, String duration) throws FileNotFoundException {
         PrintWriter writer = new PrintWriter("src/com/capgemini/Model/ReservationDB");
         model.getReservations().remove(count);
