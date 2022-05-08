@@ -58,7 +58,7 @@ public class ReservationAddView {
         canoeId = progressController.whichCanoeIsFree(reservationDate, canoeType, startTime);
         if (canoeId == null) {
             warningMessages();
-            return null;
+            return new Reservation();
         }
         System.out.println(GREEN_BOLD + "Canoe Id: " + canoeId + TEXT_RESET);
         //It calculates the total cost by using the duration and canoeid
