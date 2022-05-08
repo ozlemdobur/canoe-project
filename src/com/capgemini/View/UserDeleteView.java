@@ -10,24 +10,27 @@ public class UserDeleteView {
     String id, name;
 
     public void execute() {
+<<<<<<< HEAD
         System.out.println(GREEN_BOLD + "***************************************" + TEXT_RESET);
+=======
+        System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
+>>>>>>> f7c814534c55a6a83c96d7bfe63d43077f6cb9cb
         System.out.println(GREEN_BOLD + "**********  USER DELETE MENU  *********" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "***************************************" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information to delete an User" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "ID : ");
         id = sc.nextLine();
-
     }
 
     public String getId() {
         return id.trim().toUpperCase(Locale.ROOT);
     }
-
     public String getName() {
         return name.trim().toUpperCase(Locale.ROOT);
     }
 
     public void successMessage() {
+        System.out.println(TEXT_RED + "You deleted the user Successfully!!!!" + TEXT_RESET);
         System.out.println(TEXT_RED + "You deleted the user!" + TEXT_RESET);
     }
 
@@ -36,7 +39,6 @@ public class UserDeleteView {
         System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET + name);
         System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + id);
         System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + role);
-
     }
 
     public boolean checkUser() {

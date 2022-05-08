@@ -19,6 +19,7 @@ public class ReservationAddView {
         System.out.println(GREEN_BOLD + "**********  RESERVATION ADD MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "*******************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information for new Reservation" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Reservation Id : " + progressController.newIdForNewReservation() + TEXT_RESET);
         //Reservation Id
         System.out.println(GREEN_BOLD + "Reservation Id : " + progressController.newIdForNewReservation() + TEXT_RESET);
         //Room Number
@@ -63,6 +64,7 @@ public class ReservationAddView {
         //It calculates the total cost by using the duration and canoeid
         String cost = progressController.costCalculating(duration, canoeId);
         System.out.println(GREEN_BOLD + "TOTAL COST : " + cost + TEXT_RESET);
+
         //Confirm Screen to add a new reservation
         System.out.print(GREEN_BOLD + "DO YOU WANT TO ADD NEW RESERVATION [ Y / N]) " + TEXT_RESET);
         String answer = scanner.nextLine().toUpperCase();

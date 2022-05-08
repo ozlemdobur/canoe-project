@@ -9,6 +9,9 @@ import static com.capgemini.Main.TEXT_RESET;
 public class CanoeMenuView {
     public String show(List activeDetailMenu) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println(GREEN_BOLD + "******************************" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "********  CANOE MENU  ********" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "******************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "*******************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "********  CANOE MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "*******************************" + TEXT_RESET);
