@@ -4,11 +4,12 @@ import com.capgemini.Model.*;
 import com.capgemini.View.ReservationAddView;
 import com.capgemini.View.ReservationMenuView;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationController {
-    public void execute(Model model) throws IOException {
+    public void execute(Model model) throws IOException, ParseException {
         boolean selectedAnyMenu = true;
         while (selectedAnyMenu) {
             ReservationMenuView reservationMenuView = new ReservationMenuView();

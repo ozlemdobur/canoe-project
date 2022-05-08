@@ -13,7 +13,6 @@ public class UserPasswordChangeView {
 
 
     public void executeView() {
-
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "**********  USER PASSWORD CHANGE MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
@@ -47,7 +46,7 @@ public class UserPasswordChangeView {
 
     public void successfulMessage() {
         System.out.println(TEXT_RED + "Congratulations password changed successfully!!!!" + TEXT_RESET);
-
+        System.out.println(TEXT_RED + "You changed the password successfully!!!!" + TEXT_RESET);
     }
 
     public String aSave() {

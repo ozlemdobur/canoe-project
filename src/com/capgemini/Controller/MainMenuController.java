@@ -3,11 +3,9 @@ package com.capgemini.Controller;
 import com.capgemini.Model.Model;
 import com.capgemini.Model.Permission;
 import com.capgemini.Model.View;
-import com.capgemini.View.LoginView;
 import com.capgemini.View.MainMenuView;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class MainMenuController {
         this.model = model;
     }
 
-    public void execute(boolean loginStatus) throws IOException {
+    public void execute(boolean loginStatus) throws IOException, ParseException {
         while (loginStatus) {
             MainMenuView mainMenuView = new MainMenuView();
             String selectedMainMenuItem = mainMenuView.showMainMenu(mainMenuList(model));
@@ -57,7 +55,3 @@ public class MainMenuController {
         return mainMenuList;
     }
 }
-
-
-
-

@@ -7,6 +7,7 @@ import com.capgemini.View.ReservationAddView;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 
 public class ReservationAddController {
     private Model model;
@@ -16,7 +17,7 @@ public class ReservationAddController {
         this.model = model;
     }
 
-    public boolean execute() {
+    public boolean execute() throws ParseException {
         ReservationAddView reservationAddView = new ReservationAddView();
         ReservationProgressController progressController = new ReservationProgressController(model);
         Reservation newReservation = reservationAddView.execute(progressController);        //Reservation newReservation = reservationAddView.execute(model,(model.getReservations().size()+1)+"");
@@ -47,7 +48,9 @@ public class ReservationAddController {
                     reservations.getCanoeType() + "," +
                     reservations.getCanoeId() + "," +
                     reservations.getDate() + "," +
-                    reservations.getDuration());
+                    reservations.getDuration() + "," +
+                    reservations.getStartTime()+ "," +
+                    reservations.getEndTime());
         }
         writer.close();
         return true;

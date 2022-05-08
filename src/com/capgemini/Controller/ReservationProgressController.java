@@ -4,8 +4,12 @@ import com.capgemini.Model.Canoe;
 import com.capgemini.Model.Model;
 import com.capgemini.Model.Reservation;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class ReservationProgressController {
@@ -33,18 +37,26 @@ public class ReservationProgressController {
 
     }
 
-    public String whichCanoeIsFree(String reservationDate, String canoeType) {
+    public String whichCanoeIsFree(String reservationDate, String canoeType, String startTime) throws ParseException {
+        SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
+        Date stTime = parser.parse(startTime);
+        Date endTime;
         List<Integer> rezervedCanoeId = new <Integer>ArrayList();
-
         for (Reservation reservation : model.getReservations()) {
+            endTime = parser.parse(reservation.getEndTime());
             if (reservation.getDate().equals(reservationDate) &&
-                    reservation.getCanoeType().equals(canoeType)) {
+                    reservation.getCanoeType().equals(canoeType) &&
+                    !endTime.before(stTime)) {
                 rezervedCanoeId.add(Integer.parseInt(reservation.getCanoeId()));
             }
         }
+
         Collections.sort(rezervedCanoeId);
         for (Canoe canoe : model.getCanoes()) {
-            if (canoe.getCanoeType().equals(canoeType)) {
+            if (canoe.getCanoeType().trim().equals(canoeType.trim())) {
+                if (rezervedCanoeId.size() == 0) {
+                    return canoe.getCanoeId();
+                }
                 if (!rezervedCanoeId.contains(Integer.valueOf(canoe.getCanoeId()))) {
                     return canoe.getCanoeId();
                 }
@@ -53,13 +65,46 @@ public class ReservationProgressController {
         return null;
     }
 
-    public String defaultCanoeDuration(String canoeId) {
+    public String defaultCanoeDuration(String canoeType) {
         String defaultCanoeDuration = "30";
         for (Canoe canoe : model.getCanoes()) {
-            if (canoe.getCanoeId().equals(canoeId)) {
+            if (canoe.getCanoeType().equals(canoeType)) {
                 return canoe.getTimeOfTheMinimumTrip().trim();
             }
         }
         return defaultCanoeDuration;
+    }
+
+    public int splitHourMinute(String hourOrMinute, String startTime) {
+        int part = 0;
+        if (startTime.contains(":")) {
+            String[] parts = startTime.split(":");
+            if (hourOrMinute.equals("H")) {
+                part = Integer.parseInt(parts[0]);
+            } else {
+                part = Integer.parseInt(parts[1]);
+            }
+        }
+        return part;
+    }
+
+    public String endTimeCalculating(String startTime, String duration) {
+        int reservationHour = splitHourMinute("H", startTime);
+        int reservationMinute = splitHourMinute("M", startTime);
+        LocalTime lt = LocalTime.of(reservationHour, reservationMinute);
+        lt = lt.plusMinutes(Long.parseLong(duration));
+        return lt.toString();
+    }
+
+    public boolean dateChecking(String reservationDate) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date today = formatter.parse(LocalDate.now().toString());
+        Date date = formatter.parse(reservationDate);
+        if(date.before(today)){
+            System.out.println("today" + today);
+            System.out.println("date" + date);
+            return false;
+        }
+        return true;
     }
 }
