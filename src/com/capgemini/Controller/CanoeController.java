@@ -28,10 +28,7 @@ public class CanoeController {
                     } else {
                         canoeAddView.failedMessages();
                         selectedCanoeMenuItem = "CA";
-                        break;
                     }
-                    CanoeAddController canoeAddController = new CanoeAddController(model, newCanoe);
-                    canoeAddController.execute();
                 }
                 case "CE" -> {
                     CanoeEditController canoeEditController = new CanoeEditController();
