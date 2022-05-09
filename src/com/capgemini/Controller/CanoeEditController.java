@@ -78,4 +78,5 @@ public class CanoeEditController {
         writer.close();
         canoeEditView.successfulMessage(chosenKey);
     }
+
 }

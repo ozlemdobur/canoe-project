@@ -15,14 +15,11 @@ public class ReservationController {
             ReservationMenuView reservationMenuView = new ReservationMenuView();
             List reservationMenuList = reservationMenuList(model);
             String selectedReservationMenuItem = reservationMenuView.show(reservationMenuList);
-            boolean isItSuccessed ;
             switch (selectedReservationMenuItem) {
                 case "RA":
                     ReservationAddController reservationAddController = new ReservationAddController(model);
-                    isItSuccessed = reservationAddController.execute();
-                    if (isItSuccessed) {
-                        execute(model);
-                    }
+                    reservationAddController.execute();
+                    break;
                 case "RE":
                     ReservationEditController reservationEditController = new ReservationEditController();
                     reservationEditController.execute();

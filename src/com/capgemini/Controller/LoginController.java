@@ -9,24 +9,25 @@ import java.util.ArrayList;
 
 public class LoginController {
     private Model model;
-    public LoginController(Model model){
+
+    public LoginController(Model model) {
         this.model = model;
     }
-    public boolean execute() {
 
+    public boolean execute() {
         LoginController loginController = new LoginController(model);
         LoginView loginView = new LoginView();
         ArrayList<String> loginNamePassword = loginView.login();
-        boolean loginStatus =  loginController.isItLogin(loginNamePassword, model);
+        boolean loginStatus = loginController.isItLogin(loginNamePassword, model);
         return loginStatus;
     }
 
-    public boolean isItLogin(ArrayList<String> loginInformation,Model model) {
+    public boolean isItLogin(ArrayList<String> loginInformation, Model model) {
 
         for (User users : model.getUsers()) {
             if (users.getUserId().equals(loginInformation.get(0))
                     && users.getPassword().equals(loginInformation.get(1))) {
-                model.setActiveUser(new User(users.getUserId(),users.getUserName(),users.getPassword(),users.getRoleKey()));
+                model.setActiveUser(new User(users.getUserId(), users.getUserName(), users.getPassword(), users.getRoleKey()));
                 return true;
             }
         }
