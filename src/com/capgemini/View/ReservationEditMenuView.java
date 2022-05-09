@@ -70,7 +70,7 @@ public class ReservationEditMenuView {
         System.out.println(GREEN_BOLD + "Start time :" + TEXT_RESET + reservation.getStartTime());
         System.out.println(GREEN_BOLD + "End Time :" + TEXT_RESET + reservation.getEndTime());
         System.out.println(TEXT_RED + "Cost :" + TEXT_RESET + cost);
-        System.out.println(TEXT_RED + "Do yu want to save the changes? Yes[Y]/No[N]" + TEXT_RESET);
+        System.out.println(TEXT_RED + "Do you want to save the changes? Yes[Y]/No[N]" + TEXT_RESET);
         String yesorno = sc.nextLine().trim().toUpperCase(Locale.ROOT);
         if (yesorno.equals("Y")) {
             return true;
@@ -101,7 +101,7 @@ public class ReservationEditMenuView {
 
     public String getNewDate() {
         System.out.println(GREEN_BOLD + "Please enter New Date" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "New Date :" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "New Date [DD-MM-YYYY] :" + TEXT_RESET);
         return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
 
