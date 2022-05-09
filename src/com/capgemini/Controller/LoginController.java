@@ -25,7 +25,7 @@ public class LoginController {
     public boolean isItLogin(ArrayList<String> loginInformation, Model model) {
 
         for (User users : model.getUsers()) {
-            if (users.getUserName().equals(loginInformation.get(0).toUpperCase())
+            if (users.getUserId().equals(loginInformation.get(0).toUpperCase())
                     && users.getPassword().equals(loginInformation.get(1))) {
                 model.setActiveUser(new User(users.getUserId(), users.getUserName(), users.getPassword(), users.getRoleKey()));
                 return true;
