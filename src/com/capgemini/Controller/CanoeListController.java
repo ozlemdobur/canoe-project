@@ -15,23 +15,27 @@ public class CanoeListController {
     public void execute() throws IOException {
         model.getCanoes().toString();
 
-        System.out.print(String.format("%-12s","ID"));
-        System.out.print(String.format("%-15s","TYPE"));
-        System.out.print(String.format("%-15s","NUMBER OF THE SEATS"));
-        System.out.print(String.format("%-10s","DURATION OF THE MINIMUM TOUR"));
-        System.out.print(String.format("%-12s","TOUR PRICE"));
+        System.out.printf("%-10s","ID");
+        System.out.printf("%-15s","TYPE");
+        System.out.printf("%-8s","NUMBER OF THE SEATS");
+        System.out.printf("%-18s","DURATION OF THE MINIMUM TOUR");
+        System.out.printf("%-18s","TOUR PRICE");
 
-        for(Canoe){
-            System.out.print(String.format("%-10s",reservation.getReservationId()));
-            System.out.print(String.format("%-10s",reservation.getRoomNumber()));
-            System.out.print(String.format("%-12s",reservation.getCanoeId()));
-            System.out.print(String.format("%-15s",reservation.getCanoeType()));
-            System.out.print(String.format("%-15s",reservation.getDate()));
-            System.out.print(String.format("%-10s",reservation.getDuration()));
-            System.out.print(String.format("%-12s",reservation.getStartTime()));
-            System.out.print(String.format("%-12s",reservation.getEndTime()));
-            System.out.println(String.format("%-12s",reservation.getCost()));
+        for(Canoe canoe : model.getCanoes()){
+            System.out.printf("\n%-10s",canoe.getCanoeId());
+
+            switch (canoe.getCanoeType().trim()) {
+                case "S" -> System.out.printf("%-15s", "Supboard");
+                case "K" -> System.out.printf("%-15s", "Kajak");
+                case "R" -> System.out.printf("%-15s", "Rowing");
+                case "E" -> System.out.printf("%-15s", "Electrical");
+            }
+
+            System.out.printf("%-25s",canoe.getNumberOfTheSeats());
+            System.out.printf("%-28s",canoe.getTimeOfTheMinimumTrip());
+            System.out.printf("%-30s",canoe.getTripPrice());
         }
+        System.out.println();
     }
 }
 

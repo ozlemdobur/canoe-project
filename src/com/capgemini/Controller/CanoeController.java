@@ -40,6 +40,10 @@ public class CanoeController {
                     canoeDeleteController.execute();
                     canoeDeleteView.successMessage();
                 }
+                case "CL" -> {
+                    CanoeListController canoeListController = new CanoeListController(model);
+                    canoeListController.execute();
+                }
                 case "E" -> {
                     MainMenuController mainMenuController = new MainMenuController(model);
                     mainMenuController.execute(true);
