@@ -15,34 +15,34 @@ public class UserEditMenuView {
     String editName, editId;
 
     public void executeView() {
-        System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "*************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "**********  USER EDIT MENU  *********" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Please enter the id of the user who you want to edit" + TEXT_RESET);
-        System.out.print(GREEN_BOLD + "ID : ");
+        System.out.println(GREEN_BOLD + "*************************************" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Please enter the information" + TEXT_RESET);
+        System.out.print(GREEN_BOLD + "ID: ");
         editId = sc.nextLine();
     }
 
     public String getNewRole() {
-        System.out.println(GREEN_BOLD + "Please enter New Role as Admin[AD], General Manager[GM], Receptionist[RE]" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "New Role :" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Please enter New Role - Admin[AD], General Manager[GM], Receptionist[RE]" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "New Role: " + TEXT_RESET);
         return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
 
     public String getNewId() {
         System.out.println(GREEN_BOLD + "Please enter New ID" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "New ID :" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "New ID: " + TEXT_RESET);
         return sc.nextLine();
     }
 
     public String getNewName() {
         System.out.println(GREEN_BOLD + "Please enter New Name" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "New Name :" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "New Name: " + TEXT_RESET);
         return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
 
     public String askForChange() {
-        System.out.println(GREEN_BOLD + "Please chose which info you want to change Name[NM]-Role[RL]" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Please chose which info you want to change - Name[NM]/Role[RL]" + TEXT_RESET);
         return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
 

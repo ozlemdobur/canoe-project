@@ -244,8 +244,6 @@ public class ReservationEditController{
             }
         }
 
-        System.out.println(selectedCanoes.get(0));
-
         SimpleDateFormat df = new SimpleDateFormat("HH:mm");
         Date stTime = df.parse(reservation.getStartTime());
         Date endTime = df.parse(reservation.getEndTime());
@@ -279,29 +277,3 @@ public class ReservationEditController{
         return null;
     }
 }
-
-
-
-/*
- for (Reservation reservation : model.getReservations()) {
-            if (date.equals(reservation.getDate()) && (startTime.equals(reservation.getStartTime()))) {
-                for (Canoe canoe : selectedCanoes) {
-                    if (!reservation.getCanoeId().equals(canoe.getCanoeId())) {
-                        availableCanoes.add(canoe);
-                    }
-                }
-            }
-                if (date.equals(reservation.getDate()) && endTime.equals(reservation.getEndTime())) {
-                    for (Canoe canoe : selectedCanoes) {
-                        if (!reservation.getCanoeId().equals(canoe.getCanoeId())) {
-                            availableCanoes.add(canoe);
-                        }
-                    }
-                }
-
-                if (availableCanoes.size() == 0) return null;
-                else return availableCanoes.get(0).getCanoeId();
-            }
-
-        return null;
- */

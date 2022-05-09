@@ -12,24 +12,28 @@ import static com.capgemini.Main.*;
 
 public class ReservationDeleteController {
     Model model = new Model();
-    private String reservationId, roomNumber, canoeType, canoeId, date, duration;
+    private String reservationId, roomNumber, canoeType, canoeId, date, duration,startTime,endTime;
+    Reservation selectedReservation;
     ReservationDeleteMenuView reservationDeleteMenuView = new ReservationDeleteMenuView();
     int count = -1;
 
     public void execute() throws FileNotFoundException {
         reservationDeleteMenuView.execute();
-        reservationId = reservationDeleteMenuView.getInputReservationId();
-        roomNumber = reservationDeleteMenuView.getInputRoomNumber();
+        reservationId = reservationDeleteMenuView.getInputReservationId();;
 
         boolean check = false;
         for (Reservation reservation : model.getReservations()) {
             count++;
-            if (reservationId.equals(reservation.getReservationId()) && roomNumber.equals(reservation.getRoomNumber())) {
+            if (reservationId.equals(reservation.getReservationId())) {
+                roomNumber=reservation.getRoomNumber();
                 canoeType = reservation.getCanoeType();
                 canoeId = reservation.getCanoeId();
                 date = reservation.getDate();
                 duration = reservation.getDuration();
-                reservationDeleteMenuView.selectedReservation(reservationId, roomNumber, canoeType, canoeId, date, duration);
+                startTime=reservation.getStartTime();
+                endTime=reservation.getEndTime();
+                selectedReservation=new Reservation(reservationId,roomNumber,canoeType,canoeId,date,duration,startTime,endTime);
+                reservationDeleteMenuView.selectedReservation(selectedReservation);
                 check = true;
                 break;
             }
