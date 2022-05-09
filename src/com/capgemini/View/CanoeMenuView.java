@@ -12,9 +12,6 @@ public class CanoeMenuView {
         System.out.println(GREEN_BOLD + "******************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "********  CANOE MENU  ********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "******************************" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "*******************************" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "********  CANOE MENU  *********" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "*******************************" + TEXT_RESET);
         for (Object detailMenu : activeDetailMenu) System.out.println(detailMenu);
         System.out.print(GREEN_BOLD + "Please select the menu :" + TEXT_RESET);
         return scanner.nextLine().toUpperCase();
