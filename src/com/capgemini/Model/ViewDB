@@ -11,4 +11,5 @@ U,User Menu
 UA,User Add
 UE,User Edit
 UD,User Delete
+UL,User List
 UP,Change Password
