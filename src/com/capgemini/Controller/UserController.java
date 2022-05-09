@@ -48,6 +48,9 @@ public class UserController {
                     UserPasswordChangeController userPasswordChangeController = new UserPasswordChangeController();
                     userPasswordChangeController.execute();
                     break;
+                case "UL":
+                    UserListController userListController = new UserListController();
+                    userListController.execute();
                 case "E":
                     MainMenuController mainMenuController = new MainMenuController(model);
                     mainMenuController.execute(true);

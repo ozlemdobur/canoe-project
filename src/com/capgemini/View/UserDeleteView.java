@@ -27,7 +27,6 @@ public class UserDeleteView {
 
     public void successMessage() {
         System.out.println(TEXT_RED + "You deleted the user Successfully!!!!" + TEXT_RESET);
-        System.out.println(TEXT_RED + "You deleted the user!" + TEXT_RESET);
     }
 
     public void selectedUser(String id, String name, String role) {
@@ -38,7 +37,7 @@ public class UserDeleteView {
     }
 
     public boolean checkUser() {
-        System.out.println(GREEN_BOLD + "Are you sure to delete the user? Yes(Y)/No(N)" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Do you want to delete the user? Yes(Y)/No(N)" + TEXT_RESET);
         String yesorno = sc.nextLine().trim().toUpperCase(Locale.ROOT);
         if (yesorno.equals("Y")) {
             return true;

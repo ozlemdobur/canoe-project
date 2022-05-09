@@ -14,7 +14,7 @@ public class CanoeDeleteView {
         System.out.println(GREEN_BOLD + "********  CANOE DELETE MENU  *******" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information to delete a Canoe" + TEXT_RESET);
-        System.out.print(GREEN_BOLD + "ID : ");
+        System.out.print(GREEN_BOLD + "Id: ");
         id = sc.nextLine();
     }
 
@@ -24,11 +24,11 @@ public class CanoeDeleteView {
 
     public void selectedCanoe(String id, String type, String seats, String minimumTrip, String price) {
         System.out.println(TEXT_RED + "Here is the selected canoe" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + id);
-        System.out.println(GREEN_BOLD + "Type :" + TEXT_RESET + type);
-        System.out.println(GREEN_BOLD + "Number of the Seats :" + TEXT_RESET + seats);
-        System.out.println(GREEN_BOLD + "Time of the Minimum Trip :" + TEXT_RESET + minimumTrip);
-        System.out.println(GREEN_BOLD + "Trip Price :" + TEXT_RESET + price);
+        System.out.println(GREEN_BOLD + "Id:" + TEXT_RESET + id);
+        System.out.println(GREEN_BOLD + "Type:" + TEXT_RESET + type);
+        System.out.println(GREEN_BOLD + "Number of the Seats:" + TEXT_RESET + seats);
+        System.out.println(GREEN_BOLD + "Duration(Minutes) of the Minimum Tour: " + TEXT_RESET + minimumTrip);
+        System.out.println(GREEN_BOLD + "Tour Price per " + minimumTrip + " Minutes: "  + TEXT_RESET + price);
     }
 
     public boolean checkUser() {
