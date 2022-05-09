@@ -41,7 +41,4 @@ public class CanoeDeleteView {
     public void successMessage() {
         System.out.println(TEXT_RED + "You deleted the canoe!"+ TEXT_RESET);
     }
-    public void failMessage() {
-        System.out.println(TEXT_RED + "Please fill in the all fields with correct information!"+ TEXT_RESET);
-    }
 }
