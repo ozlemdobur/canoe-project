@@ -23,7 +23,7 @@ public class Reservations {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String[] reservation = scanner.nextLine().split(",");
-                reservations.add(new Reservation(reservation[0], reservation[1], reservation[2], reservation[3], reservation[4], reservation[5], reservation[6], reservation[7]));
+                reservations.add(new Reservation(reservation[0], reservation[1], reservation[2], reservation[3], reservation[4], reservation[5], reservation[6], reservation[7], reservation[8]));
             }
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();

@@ -43,7 +43,8 @@ public class ReservationAddController {
                     reservations.getDate() + "," +
                     reservations.getDuration() + "," +
                     reservations.getStartTime() + "," +
-                    reservations.getEndTime());
+                    reservations.getEndTime()+ "," +
+                    reservations.getCost());
         }
         writer.close();
     }
