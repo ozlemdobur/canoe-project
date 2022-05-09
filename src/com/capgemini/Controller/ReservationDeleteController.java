@@ -32,7 +32,7 @@ public class ReservationDeleteController {
                 duration = reservation.getDuration();
                 startTime=reservation.getStartTime();
                 endTime=reservation.getEndTime();
-                selectedReservation=new Reservation(reservationId,roomNumber,canoeType,canoeId,date,duration,startTime,endTime);
+                selectedReservation=new Reservation(reservationId,roomNumber,canoeType,canoeId,date,duration,startTime,endTime, reservation.getCost());
                 reservationDeleteMenuView.selectedReservation(selectedReservation);
                 check = true;
                 break;
@@ -58,7 +58,10 @@ public class ReservationDeleteController {
                     reservation.getCanoeType() + "," +
                     reservation.getCanoeId() + "," +
                     reservation.getDate() + "," +
-                    reservation.getDuration());
+                    reservation.getDuration() + "," +
+                    reservation.getStartTime() + "," +
+                    reservation.getEndTime()+","+
+                    reservation.getCost());
         }
         writer.close();
         reservationDeleteMenuView.successMessage();

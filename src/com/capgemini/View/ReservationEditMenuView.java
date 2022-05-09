@@ -27,11 +27,11 @@ public class ReservationEditMenuView {
 
     public String askForChange() {
         System.out.println(GREEN_BOLD + "Please chose which info you want to change " + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Room Number [RN]" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Canoe Type [CT]" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Date [DT]" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Duration [DR]" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Start Time [ST]" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Room Number  [RN]" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Canoe Type   [CT]" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Date         [DT]" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Duration     [DR]" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Start Time   [ST]" + TEXT_RESET);
 
 
 
@@ -48,19 +48,20 @@ public class ReservationEditMenuView {
         System.out.println(GREEN_BOLD + "Duration        : " + TEXT_RESET + reservation.getDuration());
         System.out.println(GREEN_BOLD + "Start time      : " + TEXT_RESET + reservation.getStartTime());
         System.out.println(GREEN_BOLD + "End Time        : " + TEXT_RESET + reservation.getEndTime());
+        System.out.println(GREEN_BOLD + "Cost            : " + TEXT_RESET + reservation.getCost());
 
 
     }
 
     public boolean checkReservation() {
-        System.out.println(GREEN_BOLD + "Are you sure if it is correct reservation that you want to edit? Yes[Y]/No[N]" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Is it the correct reservation? Yes[Y]/No[N]" + TEXT_RESET);
         String yesorno = sc.nextLine().trim().toUpperCase(Locale.ROOT);
         if (yesorno.equals("Y")) {
             return true;
         }
         return false;
     }
-    public boolean saveReservation(String cost, Reservation reservation) {
+    public boolean saveReservation(Reservation reservation) {
         System.out.println(GREEN_BOLD + "Reservation ID  : " + TEXT_RESET + reservation.getReservationId());
         System.out.println(GREEN_BOLD + "Room Number     : " + TEXT_RESET + reservation.getRoomNumber());
         System.out.println(GREEN_BOLD + "Canoe Type      : " + TEXT_RESET + reservation.getCanoeType());
@@ -69,7 +70,7 @@ public class ReservationEditMenuView {
         System.out.println(GREEN_BOLD + "Duration        : " + TEXT_RESET + reservation.getDuration());
         System.out.println(GREEN_BOLD + "Start time      : " + TEXT_RESET + reservation.getStartTime());
         System.out.println(GREEN_BOLD + "End Time        : " + TEXT_RESET + reservation.getEndTime());
-        System.out.println(TEXT_RED + "Cost              : " + TEXT_RESET + cost);
+        System.out.println(GREEN_BOLD + "Cost            : " + TEXT_RESET + reservation.getCost());
         System.out.println(TEXT_RED + "Do you want to save the changes? Yes[Y]/No[N]" + TEXT_RESET);
         String yesorno = sc.nextLine().trim().toUpperCase(Locale.ROOT);
         if (yesorno.equals("Y")) {
@@ -120,7 +121,7 @@ public class ReservationEditMenuView {
             System.out.println(TEXT_RED + "You entered wrong time format." + TEXT_RESET);
             return null;
         }
-        return newSTime;
+        return newSTime.trim().toUpperCase(Locale.ROOT);
     }
 
     public void warningMessage(){

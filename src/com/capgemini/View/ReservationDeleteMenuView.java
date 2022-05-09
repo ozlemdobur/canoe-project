@@ -52,7 +52,7 @@ public class ReservationDeleteMenuView {
     }
 
     public void successMessage() {
-        System.out.println(TEXT_RED + "Congratulations the reservation is deleted successfully" + TEXT_RESET);
-        System.out.println(TEXT_RED + "You deleted the reservation!" + TEXT_RESET);
+        System.out.println(TEXT_RED + "The reservation is deleted successfully" + TEXT_RESET);
+
     }
 }
