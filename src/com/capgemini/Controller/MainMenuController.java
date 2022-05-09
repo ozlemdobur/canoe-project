@@ -36,7 +36,7 @@ public class MainMenuController {
                     userController.execute(model);
                     break;
                 case "E":
-                    System.exit(-1);
+                    System.exit(0);
             }
         }
     }

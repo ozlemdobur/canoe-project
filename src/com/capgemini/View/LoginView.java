@@ -14,7 +14,7 @@ public class LoginView {
         System.out.println(GREEN_BOLD + "*****************************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "*************  WELCOME TO CANOE PROGRAM  ************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "*****************************************************" + TEXT_RESET);
-        System.out.print(GREEN_BOLD + "Please enter your user id: " + TEXT_RESET);
+        System.out.print(GREEN_BOLD + "Please enter your user name: " + TEXT_RESET);
         loginNamePassword.add(scanner.nextLine());
         System.out.print(GREEN_BOLD + "Please enter your password: " + TEXT_RESET);
         loginNamePassword.add(scanner.nextLine());
