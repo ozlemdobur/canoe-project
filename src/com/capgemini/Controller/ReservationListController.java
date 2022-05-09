@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
+import static com.capgemini.Main.GREEN_BOLD;
+import static com.capgemini.Main.TEXT_RESET;
 
 public class ReservationListController {
     private Model model;
@@ -18,51 +22,43 @@ public class ReservationListController {
     }
 
     public void execute() throws IOException {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(GREEN_BOLD + "DATE : " + TEXT_RESET);
+        String date = sc.nextLine();
         model.getReservations().toString();
-        System.out.print(String.format("%-10s","ID"));
-        System.out.print(String.format("%-10s","ROOM"));
-        System.out.print(String.format("%-12s","CANOE ID"));
-        System.out.print(String.format("%-15s","CANOE TYPE"));
-        System.out.print(String.format("%-15s","DATE"));
-        System.out.print(String.format("%-10s","DURATION"));
-        System.out.print(String.format("%-12s","START"));
-        System.out.print(String.format("%-12s","END"));
-        System.out.println(String.format("%-12s","COST"));
-        for(Reservation reservation :model.getReservations()){
-            System.out.print(String.format("%-10s",reservation.getReservationId()));
-            System.out.print(String.format("%-10s",reservation.getRoomNumber()));
-            System.out.print(String.format("%-12s",reservation.getCanoeId()));
-            System.out.print(String.format("%-15s",reservation.getCanoeType()));
-            System.out.print(String.format("%-15s",reservation.getDate()));
-            System.out.print(String.format("%-10s",reservation.getDuration()));
-            System.out.print(String.format("%-12s",reservation.getStartTime()));
-            System.out.print(String.format("%-12s",reservation.getEndTime()));
-            System.out.println(String.format("%-12s",reservation.getCost()));
-        }
-       /*         + '|' +"ROOM" + '|' +"CANOE TYPE"+ '|' + "CANOE ID"+ '|' + "DATE" + '|' +
-                        "DURATION" + '|' + "START" + '|' + " END "+ '|' +" COST ");
-        */// return "Reservation{"
-/*                " " + reservationId.substring(0,4) + '|' +
-                " " + roomNumber.substring(0,4) + '|' +
-                " " + canoeType.substring(0,10) + '|' +
-                " " + canoeId.substring(0,8) + '|' +
-                " " + date.substring(0,10) + '|' +
-                " " + duration.substring(0,8) + '|' +
-                " " + startTime.substring(0,5) + '|' +
-                " " + endTime.substring(0,5) + '|' +*/
-      /*  System.out.print( String.format("%-10s",startTime));
-        System.out.print( String.format("%-10s",endTime));*/
-        //" " + endTime.substring(0,6) + '|';
-    }
-    /*    InputStream input = new BufferedInputStream(new FileInputStream("src/com/capgemini/Model/ReservationDB"));
-        byte[] buffer = new byte[8192];
-        List<Reservation> titleReservationList = new <Reservation> ArrayList();
-        try {
-            for (int length = 0; (length = input.read(buffer)) != -1; ) {
-                System.out.write(buffer, 0, length);
+        System.out.print(String.format("%-10s", "ID"));
+        System.out.print(String.format("%-10s", "ROOM"));
+        System.out.print(String.format("%-12s", "CANOE ID"));
+        System.out.print(String.format("%-15s", "CANOE TYPE"));
+        System.out.print(String.format("%-15s", "DATE"));
+        System.out.print(String.format("%-10s", "DURATION"));
+        System.out.print(String.format("%-12s", "START"));
+        System.out.print(String.format("%-12s", "END"));
+        System.out.println(String.format("%-12s", "COST"));
+        for (Reservation reservation : model.getReservations()) {
+            if (reservation.getDate().equals(date)) {
+                System.out.print(String.format("%-10s", reservation.getReservationId()));
+                System.out.print(String.format("%-10s", reservation.getRoomNumber()));
+                System.out.print(String.format("%-12s", reservation.getCanoeId()));
+                if (reservation.getCanoeType().trim().equals("S")) {
+                    System.out.print(String.format("%-15s", "Supboard"));
+                } else if (reservation.getCanoeType().trim().equals("K")) {
+                    System.out.print(String.format("%-15s", "Kajak"));
+                } else if (reservation.getCanoeType().trim().equals("R")) {
+                    System.out.print(String.format("%-15s", "Rowing"));
+                } else if (reservation.getCanoeType().trim().equals("E")) {
+                    System.out.print(String.format("%-15s", "Electrical"));
+                }
+                System.out.print(String.format("%-15s", reservation.getDate()));
+                System.out.print(String.format("%-10s", reservation.getDuration()));
+                System.out.print(String.format("%-12s", reservation.getStartTime()));
+                System.out.print(String.format("%-12s", reservation.getEndTime()));
+                System.out.println(String.format("%-12s", reservation.getCost()));
             }
-        } finally {
-            input.close();
         }
-    }*/
+            System.out.println("");
+        System.out.println("Click enter to continue!");
+        sc.nextLine();
+    }
+
 }
