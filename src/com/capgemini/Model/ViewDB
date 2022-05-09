@@ -2,6 +2,7 @@ R,Reservation Menu
 RA,Reservation Add
 RE,Reservation Edit
 RD,Reservation Delete
+RL,Reservation List
 C,Canoe Menu
 CA,Canoe Add
 CE,Canoe Edit

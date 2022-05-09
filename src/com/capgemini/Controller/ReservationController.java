@@ -17,8 +17,10 @@ public class ReservationController {
             String selectedReservationMenuItem = reservationMenuView.show(reservationMenuList);
             switch (selectedReservationMenuItem) {
                 case "RA":
-                    ReservationAddController reservationAddController = new ReservationAddController(model);
-                    reservationAddController.execute();
+                   //ReservationAddController reservationAddController = new ReservationAddController(model);
+                    //reservationAddController.execute();
+
+                    new ReservationAddController(model).execute();
                     break;
                 case "RE":
                     ReservationEditController reservationEditController = new ReservationEditController();
@@ -28,12 +30,15 @@ public class ReservationController {
                     ReservationDeleteController reservationDeleteController = new ReservationDeleteController();
                     reservationDeleteController.execute();
                     break;
+                case "RL":
+                    ReservationListController reservationListController = new ReservationListController(model);
+                    reservationListController.execute();
+                    break;
                 case "E":
                     MainMenuController mainMenuController = new MainMenuController(model);
                     mainMenuController.execute(true);
             }
         }
-        System.out.println("Reservation Controller");
     }
 
     public List<String> reservationMenuList(Model model) {

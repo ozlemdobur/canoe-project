@@ -19,7 +19,6 @@ public class ReservationAddView {
         System.out.println(GREEN_BOLD + "**********  RESERVATION ADD MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "*******************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information for new Reservation" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Reservation Id : " + progressController.newIdForNewReservation() + TEXT_RESET);
         //Reservation Id
         System.out.println(GREEN_BOLD + "Reservation Id : " + progressController.newIdForNewReservation() + TEXT_RESET);
         //Room Number
@@ -70,7 +69,7 @@ public class ReservationAddView {
         String answer = scanner.nextLine().toUpperCase();
         if (answer.equals("Y")) {
             if (!progressController.newIdForNewReservation().trim().equals("") && !roomNumber.trim().equals("") && !canoeType.trim().equals("") && !reservationDate.trim().equals("") && !duration.trim().equals("")) {
-                Reservation newReservation = new Reservation(progressController.newIdForNewReservation(), roomNumber, canoeType, canoeId, reservationDate, duration, startTime, endTime);
+                Reservation newReservation = new Reservation(progressController.newIdForNewReservation(), roomNumber, canoeType, canoeId, reservationDate, duration, startTime, endTime,cost);
                 successedMessages();
                 return newReservation;
             }else{

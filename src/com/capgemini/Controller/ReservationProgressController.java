@@ -12,6 +12,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import static com.capgemini.Main.TEXT_RED;
+import static com.capgemini.Main.TEXT_RESET;
+
 public class ReservationProgressController {
     private Model model;
 
@@ -46,7 +49,7 @@ public class ReservationProgressController {
             endTime = parser.parse(reservation.getEndTime());
             if (reservation.getDate().equals(reservationDate) &&
                     reservation.getCanoeType().equals(canoeType) &&
-                    !endTime.before(stTime)) {
+                    endTime.after(stTime)) { //datanin endtime, rezer baslangic saat sonra ise
                 rezervedCanoeId.add(Integer.parseInt(reservation.getCanoeId()));
             }
         }
@@ -98,13 +101,18 @@ public class ReservationProgressController {
 
     public boolean dateChecking(String reservationDate) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        Date today = formatter.parse(LocalDate.now().toString());
-        Date date = formatter.parse(reservationDate);
+        try {
+            Date date = formatter.parse(reservationDate);
+        }catch (ParseException pe){
+            System.out.println(TEXT_RED +"Check your date format!!!" +TEXT_RESET);
+            return false;
+        }
+       /* Date today = formatter.parse(LocalDate.now().toString());
         if(date.before(today)){
             System.out.println("today" + today);
             System.out.println("date" + date);
             return false;
-        }
+        }*/
         return true;
     }
 }

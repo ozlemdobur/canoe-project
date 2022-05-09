@@ -29,6 +29,7 @@ public class ReservationEditController{
     private String startTime;
     private String endTime;
     private String roomNumber;
+    private String cost;
     int count=-1;
     Reservation editedReservation;
 
@@ -48,7 +49,8 @@ public class ReservationEditController{
                 duration=reservation.getDuration();
                 startTime=reservation.getStartTime();
                 endTime=reservation.getEndTime();
-                Reservation selectedReservation = new Reservation(reservationId,roomNumber,canoeType,canoeId,date,duration,startTime,endTime);
+                cost = reservation.getCost();
+                Reservation selectedReservation = new Reservation(reservationId,roomNumber,canoeType,canoeId,date,duration,startTime,endTime,cost);
                 reservationEditMenuView.selectedReservation(selectedReservation);
                 check=true;
                 break;
@@ -58,7 +60,7 @@ public class ReservationEditController{
         if(check&&reservationEditMenuView.checkReservation()){
             switch (chosenKey = reservationEditMenuView.askForChange().trim().toUpperCase(Locale.ROOT)) {
                 case "RN":
-                    editedReservation = new Reservation(reservationId,reservationEditMenuView.getNewRoomNumber(),canoeType,canoeId,date,duration,startTime,endTime);
+                    editedReservation = new Reservation(reservationId,reservationEditMenuView.getNewRoomNumber(),canoeType,canoeId,date,duration,startTime,endTime,cost);
                     write(editedReservation);
                     break;
                 case "CT":
@@ -69,8 +71,8 @@ public class ReservationEditController{
                         reservationEditMenuView.warningMessage();
                         break;
                     }
-
-                    editedReservation = new Reservation(reservationId, roomNumber,newCanoeType, newCanoeID, date, duration,startTime,endTime);
+                    cost=reservationProgressController.costCalculating(duration,newCanoeID);
+                    editedReservation = new Reservation(reservationId, roomNumber,newCanoeType, newCanoeID, date, duration,startTime,endTime,cost);
                     write(editedReservation);
                     /*if(checkFreeReservation(editedReservation)) {
                     write(editedReservation);
@@ -84,13 +86,14 @@ public class ReservationEditController{
 
                 case "DT":
                     String newDuration = reservationEditMenuView.getNewDuration();
-                    editedReservation= new Reservation(reservationId, roomNumber, canoeType, canoeId, newDuration, duration,startTime,endTime);
+                    editedReservation= new Reservation(reservationId, roomNumber, canoeType, canoeId, newDuration, duration,startTime,endTime,cost);
                     String newdtCanoeID = reservationProgressController.whichCanoeIsFree(editedReservation.getDate(),editedReservation.getCanoeType(),editedReservation.getStartTime());
                    if(newdtCanoeID==null){
                        reservationEditMenuView.warningMessage();
                        break;
                 }
-                   editedReservation= new Reservation(reservationId,roomNumber,canoeType,canoeId,date,newDuration,startTime,endTime);
+                   cost=reservationProgressController.costCalculating(newDuration,newdtCanoeID);
+                   editedReservation= new Reservation(reservationId,roomNumber,canoeType,canoeId,date,newDuration,startTime,endTime,cost);
 
 
                     /* if(checkFreeReservation(editedReservation)) {
@@ -104,7 +107,7 @@ public class ReservationEditController{
                     */
 
                 case "DR":
-                    editedReservation= new Reservation(reservationId, roomNumber, canoeType, canoeId, date,reservationEditMenuView.getNewDuration(),startTime,reservationProgressController.endTimeCalculating(startTime,duration));
+                    editedReservation= new Reservation(reservationId, roomNumber, canoeType, canoeId, date,reservationEditMenuView.getNewDuration(),startTime,endTime,cost);
                 if(checkFreeReservation(editedReservation)) {
                     write(editedReservation);
                     break;
@@ -114,7 +117,7 @@ public class ReservationEditController{
                 }
                 case "ST":
                     String newSTime = reservationEditMenuView.getNewStartTime().trim();
-                    editedReservation = new Reservation(reservationId, roomNumber, canoeType, canoeId, date, duration, newSTime, reservationProgressController.endTimeCalculating(newSTime, duration));
+                    editedReservation = new Reservation(reservationId, roomNumber, canoeType, canoeId, date, duration, newSTime, endTime,cost);
                     if(checkFreeReservation(editedReservation)) {
                         write(editedReservation);
                         break;
