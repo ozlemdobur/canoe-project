@@ -19,7 +19,7 @@ public class UserEditMenuView {
         System.out.println(GREEN_BOLD + "**********  USER EDIT MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "*************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information" + TEXT_RESET);
-        System.out.print(GREEN_BOLD + "ID: ");
+        System.out.print(GREEN_BOLD + "Username : ");
         editId = sc.nextLine();
     }
 
@@ -30,9 +30,9 @@ public class UserEditMenuView {
     }
 
     public String getNewId() {
-        System.out.println(GREEN_BOLD + "Please enter New ID" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "New ID: " + TEXT_RESET);
-        return sc.nextLine();
+        System.out.println(GREEN_BOLD + "Please enter New Username" + TEXT_RESET);
+        System.out.print(GREEN_BOLD + "New Username: " + TEXT_RESET);
+        return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
 
     public String getNewName() {
@@ -42,7 +42,7 @@ public class UserEditMenuView {
     }
 
     public String askForChange() {
-        System.out.println(GREEN_BOLD + "Please chose which info you want to change - Name[NM]/Role[RL]" + TEXT_RESET);
+        System.out.println(GREEN_BOLD + "Please chose which info you want to change - Full Name[NM]/Role[RL]/Username[UN]" + TEXT_RESET);
         return sc.nextLine().trim().toUpperCase(Locale.ROOT);
     }
 
@@ -52,9 +52,9 @@ public class UserEditMenuView {
 
     public void selectedUser(String id, String name, String role) {
         System.out.println(GREEN_BOLD + "Here is the chosen User" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET + name);
-        System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + id);
-        System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + role);
+        System.out.println(GREEN_BOLD + "Full Name  :" + TEXT_RESET + name);
+        System.out.println(GREEN_BOLD + "Username   :" + TEXT_RESET + id);
+        System.out.println(GREEN_BOLD + "Role       :" + TEXT_RESET + role);
     }
 
     public String askSave() {
@@ -64,9 +64,9 @@ public class UserEditMenuView {
 
     public void editedUserView(User user) {
         System.out.println(GREEN_BOLD + "Here is the chosen User" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET + user.getUserName());
-        System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + user.getUserId());
-        System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + user.getRoleKey());
+        System.out.println(GREEN_BOLD + "Full Name :" + TEXT_RESET + user.getUserName());
+        System.out.println(GREEN_BOLD + "Username  :" + TEXT_RESET + user.getUserId());
+        System.out.println(GREEN_BOLD + "Role      :" + TEXT_RESET + user.getRoleKey());
     }
 
     public void warnMessage() {

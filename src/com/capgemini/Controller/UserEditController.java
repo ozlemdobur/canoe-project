@@ -49,6 +49,10 @@ public class UserEditController {
                     }else{userEditMenuView.warnMessage();break;}
                     if(userEditMenuView.askSave().equals("Y")){write(editedUser);}
                     break;
+                case "UN":
+                    String newUsername = userEditMenuView.getNewId();
+                    editedUser=new User(newUsername,name,password,role);
+                    if(userEditMenuView.askSave().equals("Y")){write(editedUser);}
                 default:
                     userEditMenuView.warnMessage();
             }
