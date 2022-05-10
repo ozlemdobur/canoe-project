@@ -17,7 +17,7 @@ public class UserPasswordChangeView {
         System.out.println(GREEN_BOLD + "**********  USER PASSWORD CHANGE MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the name and id of the user who you want to change password" + TEXT_RESET);
-        System.out.print(GREEN_BOLD + "ID : ");
+        System.out.print(GREEN_BOLD + "Username : ");
         inputId = sc.nextLine();
     }
 
@@ -29,10 +29,10 @@ public class UserPasswordChangeView {
 
     public void selectedUser(String id, String name, String role, String password) {
         System.out.println(GREEN_BOLD + "Here is the chosen User" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET + name);
-        System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + id);
-        System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + role);
-        System.out.println(GREEN_BOLD + "Password :" + TEXT_RESET + password);
+        System.out.println(GREEN_BOLD + "Full Name :" + TEXT_RESET + name);
+        System.out.println(GREEN_BOLD + "Username  :" + TEXT_RESET + id);
+        System.out.println(GREEN_BOLD + "Role      :" + TEXT_RESET + role);
+        System.out.println(GREEN_BOLD + "Password  :" + TEXT_RESET + password);
     }
 
 
@@ -45,7 +45,6 @@ public class UserPasswordChangeView {
     }
 
     public void successfulMessage() {
-        System.out.println(TEXT_RED + "Congratulations password changed successfully!!!!" + TEXT_RESET);
         System.out.println(TEXT_RED + "You changed the password successfully!!!!" + TEXT_RESET);
     }
 
@@ -55,9 +54,9 @@ public class UserPasswordChangeView {
     }
 
     public void showChangedUser(User changedUser) {
-        System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET + changedUser.getUserName());
-        System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + changedUser.getUserId());
-        System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + changedUser.getRoleKey());
-        System.out.println(GREEN_BOLD + "Password :" + TEXT_RESET + changedUser.getPassword());
+        System.out.println(GREEN_BOLD + "Full Name :" + TEXT_RESET + changedUser.getUserName());
+        System.out.println(GREEN_BOLD + "Username  :" + TEXT_RESET + changedUser.getUserId());
+        System.out.println(GREEN_BOLD + "Role      :" + TEXT_RESET + changedUser.getRoleKey());
+        System.out.println(GREEN_BOLD + "Password  :" + TEXT_RESET + changedUser.getPassword());
     }
 }
