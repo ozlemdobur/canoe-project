@@ -27,21 +27,27 @@ public class ReservationAddView {
         //Canoe Type
         System.out.println(GREEN_BOLD + "Supboard(1 Person) [ S ] - Kajak(2 Persons) - [ K ] - Rowing(4 Persons) [ R ]- Electrical (4 Persons) [ E ]" + TEXT_RESET);
         System.out.print(GREEN_BOLD + "Canoe Type : " + TEXT_RESET);
-        canoeType = scanner.nextLine().toUpperCase();
+        canoeType = scanner.nextLine().toUpperCase(Locale.ROOT);
+        while(!(canoeType.toUpperCase().equals("S") || canoeType.toUpperCase().equals("K") || canoeType.toUpperCase().equals("R") || canoeType.toUpperCase().equals("E"))) {
+            System.out.println(TEXT_RED + "Please choose one of the existed canoe types!"+ TEXT_RESET);
+            System.out.print(GREEN_BOLD + "Type: " + TEXT_RESET);
+            canoeType = scanner.nextLine();
+        }
         //Reservation Date
         System.out.print(GREEN_BOLD + "Date [dd-mm-yyyy] : " + TEXT_RESET);
         reservationDate = scanner.nextLine();
         //Control the date if it is before today
-        if (!progressController.dateChecking(reservationDate)) {
-            System.out.println(TEXT_RED + "Please enter the correct day format!" + TEXT_RESET);
-            return null;
+        while(!progressController.dateChecking(reservationDate)) {
+            System.out.print(GREEN_BOLD + "Date [dd-mm-yyyy] : " + TEXT_RESET);
+            reservationDate = scanner.nextLine();
         }
         //Starting Time -- Control the time if it is correct type
         System.out.print(GREEN_BOLD + "Start Time [ hh:mm ] : " + TEXT_RESET);
         startTime = scanner.nextLine().toUpperCase();
-        if (!startTime.contains(":")) {
+        while (!startTime.contains(":")) {
             System.out.println(TEXT_RED + "Please enter the correct time format!" + TEXT_RESET);
-            return null;
+            System.out.print(GREEN_BOLD + "Start Time [ hh:mm ] : " + TEXT_RESET);
+            startTime = scanner.nextLine().toUpperCase();
         }
         //Duration of the trip Invoke the default trip from the canoedb
         duration = progressController.defaultCanoeDuration(canoeType);
