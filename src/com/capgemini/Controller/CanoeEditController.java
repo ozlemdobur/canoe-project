@@ -55,8 +55,7 @@ public class CanoeEditController {
                     editedCanoe = new Canoe(id, type, seats, minimumTrip, canoeEditView.getNewPrice() );
                     canoeEditView.editedCanoeView(editedCanoe);
                     if (canoeEditView.askSave().equals("Y")) write(editedCanoe);
-                default:
-                    canoeEditView.warnMessage();
+                    break;
             }
         } else {
             System.out.println(GREEN_BOLD + "The canoe is not found please check information and try again." + TEXT_RESET);

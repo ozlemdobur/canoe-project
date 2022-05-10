@@ -60,7 +60,7 @@ public class CanoeEditView {
     }
 
     public void successfulMessage(String chosenKey) {
-        System.out.println(TEXT_RED + "Congratulations! " + chosenKey + " is changed successfully!" + TEXT_RESET);
+        System.out.println(TEXT_RED + "The change was made successfully!" + TEXT_RESET);
     }
 
     public void selectedCanoe(String id, String type, String seats, String minimumTrip, String price) {
