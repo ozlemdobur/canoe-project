@@ -14,7 +14,7 @@ public class UserDeleteView {
         System.out.println(GREEN_BOLD + "**********  USER DELETE MENU  *********" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "************************************" + TEXT_RESET);
         System.out.println(GREEN_BOLD + "Please enter the information to delete an User" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "ID : ");
+        System.out.print(GREEN_BOLD + "Username : ");
         id = sc.nextLine();
     }
 
@@ -31,9 +31,9 @@ public class UserDeleteView {
 
     public void selectedUser(String id, String name, String role) {
         System.out.println(GREEN_BOLD + "Here is the chosen User" + TEXT_RESET);
-        System.out.println(GREEN_BOLD + "Name :" + TEXT_RESET + name);
-        System.out.println(GREEN_BOLD + "ID :" + TEXT_RESET + id);
-        System.out.println(GREEN_BOLD + "Role :" + TEXT_RESET + role);
+        System.out.println(GREEN_BOLD + "Full Name  :" + TEXT_RESET + name);
+        System.out.println(GREEN_BOLD + "Username   :" + TEXT_RESET + id);
+        System.out.println(GREEN_BOLD + "Role       :" + TEXT_RESET + role);
     }
 
     public boolean checkUser() {
