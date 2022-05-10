@@ -92,11 +92,17 @@ public class ReservationProgressController {
     }
 
     public String endTimeCalculating(String startTime, String duration) {
-        int reservationHour = splitHourMinute("H", startTime);
-        int reservationMinute = splitHourMinute("M", startTime);
-        LocalTime lt = LocalTime.of(reservationHour, reservationMinute);
-        lt = lt.plusMinutes(Long.parseLong(duration));
-        return lt.toString();
+        try {
+            int reservationHour = splitHourMinute("H", startTime);
+            int reservationMinute = splitHourMinute("M", startTime);
+            LocalTime lt = LocalTime.of(reservationHour, reservationMinute);
+            lt = lt.plusMinutes(Long.parseLong(duration));
+            return lt.toString();
+        }catch(Exception ex){
+            System.out.println(TEXT_RED +"Check your time format!!!" +TEXT_RESET);
+            return null;
+        }
+
     }
 
     public boolean dateChecking(String reservationDate) throws ParseException {
