@@ -53,6 +53,5 @@ public class CanoeDeleteController<check> {
                     canoe.getTripPrice());
         }
         writer.close();
-        canoeDeleteView.successMessage();
     }
 }

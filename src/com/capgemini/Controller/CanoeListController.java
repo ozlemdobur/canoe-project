@@ -4,9 +4,11 @@ import com.capgemini.Model.Model;
 import com.capgemini.Model.Canoe;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class CanoeListController {
     private Model model;
+    Scanner scanner = new Scanner(System.in);
 
     public CanoeListController(Model model) {
         this.model = model;
@@ -17,9 +19,9 @@ public class CanoeListController {
 
         System.out.printf("%-10s","ID");
         System.out.printf("%-15s","TYPE");
-        System.out.printf("%-8s","NUMBER OF THE SEATS");
-        System.out.printf("%-18s","DURATION OF THE MINIMUM TOUR");
-        System.out.printf("%-18s","TOUR PRICE");
+        System.out.printf("%-15s","SEATS");
+        System.out.printf("%-18s","DURATION");
+        System.out.printf("%-18s","PRICE");
 
         for(Canoe canoe : model.getCanoes()){
             System.out.printf("\n%-10s",canoe.getCanoeId());
@@ -31,11 +33,13 @@ public class CanoeListController {
                 case "E" -> System.out.printf("%-15s", "Electrical");
             }
 
-            System.out.printf("%-25s",canoe.getNumberOfTheSeats());
-            System.out.printf("%-28s",canoe.getTimeOfTheMinimumTrip());
-            System.out.printf("%-30s",canoe.getTripPrice());
+            System.out.printf("%-15s",canoe.getNumberOfTheSeats());
+            System.out.printf("%-18s",canoe.getTimeOfTheMinimumTrip());
+            System.out.printf("%-18s",canoe.getTripPrice());
         }
-        System.out.println();
+        System.out.println("");
+        System.out.println("Click enter to continue");
+        scanner.nextLine();
     }
 }
 
