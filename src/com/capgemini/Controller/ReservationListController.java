@@ -56,7 +56,7 @@ public class ReservationListController {
                 System.out.println(String.format("%-12s", reservation.getCost()));
             }
         }
-            System.out.println("");
+        System.out.println("");
         System.out.println("Click enter to continue!");
         sc.nextLine();
     }
